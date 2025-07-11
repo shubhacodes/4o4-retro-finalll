@@ -4,6 +4,7 @@ import { useState } from "react";
 import { StandardCTAButton } from "./cta-test";
 import JoystickButton from "@/components/ui/JoystickButton";
 import useSound from "@/hooks/use-sound";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const tabsData = [
   {
@@ -174,83 +175,73 @@ function BrowserTabsTestSoft() {
           </div>
 
           {/* Website Content Area - Changed to white background */}
-          <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-b-xl">
+          <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-b-xl flex justify-center">
             {isNewTab ? (
               /* New Tab Content */
-              <div className="flex flex-col max-w-3xl">
+              <div className="flex flex-col max-w-3xl text-center w-full relative">
+                {/* Subtle PREVIEW watermark */}
+                <div className="absolute top-4 right-4 opacity-10 pointer-events-none">
+                  <span className="text-gray-400 text-xs font-oswald transform -rotate-12 tracking-widest">
+                    PREVIEW
+                  </span>
+                </div>
+
                 {/* Header with placeholder profile and call-to-action */}
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex flex-col items-center mb-6 relative">
                   {/* Placeholder Profile Image with Question Mark */}
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#FFB600] border-2 border-black rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-black text-2xl sm:text-3xl font-oswald font-bold">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#FFB600] border-2 border-dashed border-gray-400 rounded-full flex items-center justify-center mb-4 opacity-70">
+                    <span className="text-black text-2xl sm:text-3xl font-oswald font-bold animate-pulse">
                       ?
                     </span>
                   </div>
 
                   {/* Your Name and Company */}
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl text-black font-oswald font-bold mb-1">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gray-100 opacity-20 rounded-lg"></div>
+                    <h3 className="text-xl sm:text-2xl text-gray-500 font-oswald font-bold mb-1 relative border-b border-dashed border-gray-300">
                       YOUR NAME HERE
                     </h3>
-                    <p className="text-[#586158] font-space-grotesk text-sm sm:text-base mb-2">
+                    <p className="text-gray-400 font-space-grotesk text-sm sm:text-base mb-2 relative border-b border-dashed border-gray-300">
                       Your Title
                     </p>
-                    <p className="text-[#586158] font-space-grotesk text-sm">
+                    <p className="text-gray-400 font-space-grotesk text-sm relative border-b border-dashed border-gray-300">
                       Your Company
                     </p>
-                  </div>
-
-                  {/* Future Star Rating */}
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="text-gray-300 text-lg sm:text-xl"
-                      >
-                        ☆
-                      </span>
-                    ))}
                   </div>
                 </div>
 
                 {/* Call-to-Action Text */}
-                <div className="mb-6">
-                  <p className="font-space-grotesk text-base sm:text-lg leading-relaxed text-[#3f4c38]">
-                    "Ready to join our success stories? Whether you need a
+                <div className="mb-6 relative">
+                  <p className="font-space-grotesk text-base sm:text-lg leading-relaxed text-gray-500 relative border border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 bg-opacity-30">
+                    Ready to join our success stories? Whether you need a
                     complete rebrand, a stunning website, or a full digital
                     transformation, we're here to make it happen. Let's create
-                    something amazing together and earn those 5 stars!"
+                    something amazing together and earn those 5 stars!
                   </p>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <StandardCTAButton
-                    size="medium"
-                    rounded={true}
+                {/* Action Button */}
+                <div className="flex justify-center">
+                  <button
+                    className="px-6 py-3 font-bold text-black border-2 text-xl hover:scale-105 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer"
+                    style={{
+                      backgroundColor: "#f0752f",
+                      borderColor: "#5a5248",
+                      fontFamily: "var(--font-oswald)",
+                    }}
                     onClick={() => console.log("Start Project clicked")}
-                    className="bg-[#f87a30] text-black border-2 border-black hover:bg-[#DE6A48] transition-all px-6 py-3"
                   >
                     START YOUR PROJECT
-                  </StandardCTAButton>
-
-                  <StandardCTAButton
-                    size="medium"
-                    rounded={true}
-                    onClick={() => console.log("Get In Touch clicked")}
-                    className="bg-[#FFB600] text-black border-2 border-black hover:bg-[#E6A500] transition-all px-6 py-3"
-                  >
-                    GET IN TOUCH
-                  </StandardCTAButton>
+                  </button>
                 </div>
               </div>
             ) : (
               /* Regular Testimonial Content */
-              <div className="flex flex-col max-w-3xl">
-                {/* Header with circular image, name, and stars */}
-                <div className="flex items-center gap-4 mb-6">
+              <div className="flex flex-col max-w-3xl text-center w-full">
+                {/* Header with circular image and name */}
+                <div className="flex flex-col items-center mb-6">
                   {/* Large Circular Profile Image */}
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#00796B] border-2 border-black rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#00796B] border-2 border-black rounded-full flex items-center justify-center mb-4">
                     <span className="text-white text-lg sm:text-xl font-oswald font-bold">
                       {currentTab?.clientName
                         .split(" ")
@@ -260,7 +251,7 @@ function BrowserTabsTestSoft() {
                   </div>
 
                   {/* Name and Company */}
-                  <div className="flex-1">
+                  <div>
                     <h3 className="text-xl sm:text-2xl text-black font-oswald font-bold mb-1">
                       {currentTab?.clientName}
                     </h3>
@@ -270,18 +261,6 @@ function BrowserTabsTestSoft() {
                     <p className="text-[#586158] font-space-grotesk text-sm">
                       {currentTab?.label}
                     </p>
-                  </div>
-
-                  {/* Star Rating */}
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="text-[#FFB600] text-lg sm:text-xl"
-                      >
-                        ★
-                      </span>
-                    ))}
                   </div>
                 </div>
 
@@ -293,7 +272,7 @@ function BrowserTabsTestSoft() {
                 </div>
 
                 {/* Project Type Badge */}
-                <div className="flex justify-start">
+                <div className="flex justify-center">
                   <span className="inline-block bg-[#f87a30] text-black font-space-grotesk text-sm px-4 py-2 rounded-full border-2 border-black">
                     {currentTab?.title} • {currentTab?.subtitle}
                   </span>
@@ -327,13 +306,11 @@ export default function TestimonialsTest() {
             {/* Soft Version */}
             <div className="w-full">
               <div className="mb-8 sm:mb-12 text-center">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl text-[#3f4c38] font-oswald mb-2 sm:mb-4">
-                  TESTIMONIALS - ROUND
-                </h2>
-                <p className="text-sm sm:text-base lg:text-lg text-[#3f4c38] font-space-grotesk max-w-2xl mx-auto px-4">
-                  The same experience with softer edges and smoother animations.
-                  Modern comfort meets retro charm!
-                </p>
+                <SectionHeader
+                  mainHeading="Clients talk and we hear."
+                  subLabel="Testimonials"
+                  className="mb-4"
+                />
               </div>
               <BrowserTabsTestSoft />
             </div>

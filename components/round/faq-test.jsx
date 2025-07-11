@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 // --- Data for the FAQ section ---
 const faqData = [
@@ -111,7 +112,7 @@ const QuestionBubble = ({ children, isOpen }) => (
             ? "0 0 0 1px #FFB600, 0 4px 12px rgba(255, 182, 0, 0.15)"
             : "0 2px 8px rgba(0, 0, 0, 0.05)",
         }}
-        className="font-space-grotesk text-sm sm:text-base lg:text-lg font-medium leading-relaxed sm:w-[480px] sm:min-h-[80px] sm:p-[20px_24px]"
+        className="font-space-grotesk text-base sm:text-lg font-medium leading-relaxed sm:w-[480px] sm:min-h-[80px] sm:p-[20px_24px]"
       >
         {children}
       </div>
@@ -159,7 +160,7 @@ const AnswerBubble = ({ children }) => (
           boxShadow:
             "inset 0 1px 3px rgba(0,0,0,0.08), 0 2px 12px rgba(255, 182, 0, 0.2)",
         }}
-        className="font-space-grotesk text-sm sm:text-base lg:text-lg font-normal leading-relaxed sm:w-[520px] sm:min-h-[90px] sm:p-[24px_28px]"
+        className="font-space-grotesk text-base sm:text-lg font-normal leading-relaxed sm:w-[520px] sm:min-h-[90px] sm:p-[24px_28px]"
       >
         {children}
       </div>
@@ -243,7 +244,7 @@ const RoundedQuestionBubble = ({ children, isOpen }) => (
             ? "0 0 0 1px #FFB600, 0 4px 12px rgba(255, 182, 0, 0.15)"
             : "0 2px 8px rgba(0, 0, 0, 0.05)",
         }}
-        className="font-space-grotesk text-sm sm:text-base lg:text-lg font-medium leading-relaxed sm:w-[420px] sm:min-h-[70px] sm:rounded-[24px] sm:p-[18px_22px]"
+        className="font-space-grotesk text-base sm:text-lg font-medium leading-relaxed sm:w-[420px] sm:min-h-[70px] sm:rounded-[24px] sm:p-[18px_22px]"
       >
         {children}
       </div>
@@ -290,7 +291,7 @@ const RoundedAnswerBubble = ({ children }) => (
           boxShadow:
             "inset 0 1px 3px rgba(0,0,0,0.08), 0 2px 12px rgba(255, 182, 0, 0.2)",
         }}
-        className="font-space-grotesk text-sm sm:text-base lg:text-lg font-normal leading-relaxed sm:w-[460px] sm:min-h-[80px] sm:rounded-[24px] sm:p-[22px_26px]"
+        className="font-space-grotesk text-base sm:text-lg font-normal leading-relaxed sm:w-[460px] sm:min-h-[80px] sm:rounded-[24px] sm:p-[22px_26px]"
       >
         {children}
       </div>
@@ -346,25 +347,12 @@ const RoundedFAQSection = () => {
           "radial-gradient(circle at 30% 40%, rgba(255, 182, 0, 0.03) 0%, transparent 60%), radial-gradient(circle at 70% 80%, rgba(255, 182, 0, 0.02) 0%, transparent 60%)",
       }}
     >
-      <div
-        className="mx-auto px-4 sm:px-6 lg:px-8"
-        style={{ maxWidth: "1100px" }}
-      >
+      <div className="mx-auto max-w-6xl px-6">
         <div className="text-center mb-8 sm:mb-12 lg:mb-[70px]">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-3 sm:mb-4 lg:mb-5 font-oswald">
-            FAQS
-          </h1>
-          <div
-            style={{
-              width: "60px",
-              height: "2px",
-              backgroundColor: "#FFB600",
-              margin: "0 auto",
-              borderRadius: "50px",
-              boxShadow: "0 2px 8px rgba(255, 182, 0, 0.3)",
-              animation: "gentlePulse 3s infinite",
-            }}
-            className="sm:w-20 sm:h-[3px] lg:w-[100px]"
+          <SectionHeader
+            mainHeading="Questions? We've got answers."
+            subLabel="FAQ"
+            className="mb-4"
           />
         </div>
 
@@ -483,25 +471,12 @@ export default function FAQTest() {
             "radial-gradient(circle at 20% 50%, rgba(255, 182, 0, 0.03) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(255, 182, 0, 0.02) 0%, transparent 60%)",
         }}
       >
-        <div
-          className="mx-auto px-4 sm:px-6 lg:px-8"
-          style={{ maxWidth: "1100px" }}
-        >
+        <div className="mx-auto max-w-6xl px-6">
           <div className="text-center mb-8 sm:mb-12 lg:mb-[70px]">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-3 sm:mb-4 lg:mb-5 font-oswald">
-              FAQS
-            </h1>
-            <div
-              style={{
-                width: "60px",
-                height: "2px",
-                backgroundColor: "#FFB600",
-                margin: "0 auto",
-                borderRadius: "50px",
-                boxShadow: "0 2px 8px rgba(255, 182, 0, 0.3)",
-                animation: "gentlePulse 3s infinite",
-              }}
-              className="sm:w-20 sm:h-[3px] lg:w-[100px]"
+            <SectionHeader
+              mainHeading="Questions? We've got answers."
+              subLabel="FAQ"
+              className="mb-4"
             />
           </div>
 

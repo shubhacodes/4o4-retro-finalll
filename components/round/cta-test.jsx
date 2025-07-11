@@ -28,7 +28,7 @@ const CTAVideo = ({ rounded = false }) => {
       style={{
         position: "relative",
         width: "100%",
-        height: "300px",
+        height: "400px",
         backgroundColor: "#000",
         border: "3px solid black",
         borderRadius: rounded ? "20px" : "3px",
@@ -38,7 +38,7 @@ const CTAVideo = ({ rounded = false }) => {
           ? "0 8px 25px rgba(0, 0, 0, 0.15)"
           : "0 4px 15px rgba(0, 0, 0, 0.1)",
       }}
-      className="sm:h-[360px]"
+      className="sm:h-[450px] lg:h-[500px]"
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
       onClick={handlePlayPause}
@@ -304,7 +304,7 @@ const SharpCTASection = () => (
             {/* Right Side: Content */}
             <div className="w-full lg:w-1/2 lg:pl-8 flex flex-col justify-center text-center lg:text-left">
               <h2
-                className="font-bold mb-4 sm:mb-6 text-2xl sm:text-3xl lg:text-4xl font-oswald"
+                className="font-bold mb-4 sm:mb-6 text-xl sm:text-2xl font-oswald"
                 style={{
                   lineHeight: "1.2",
                   color: "#3f4c38",
@@ -315,7 +315,7 @@ const SharpCTASection = () => (
                 <span style={{ color: "#f87a30" }}>special?</span>
               </h2>
               <p
-                className="mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg font-space-grotesk"
+                className="mb-6 sm:mb-8 text-base sm:text-lg font-space-grotesk"
                 style={{
                   lineHeight: "1.7",
                   color: "#3f4c38",
@@ -341,7 +341,7 @@ const SharpCTASection = () => (
   </section>
 );
 
-// --- Rounded CTA Section with Grid Lines ---
+// --- Rounded CTA Section (Clean Design) ---
 const RoundedCTASection = () => (
   <section
     className="w-full pt-6 pb-2 sm:pt-8 sm:pb-3 lg:pt-10 lg:pb-4"
@@ -359,22 +359,7 @@ const RoundedCTASection = () => (
           overflow: "hidden",
         }}
       >
-        {/* Grid strip at top */}
-        <div
-          style={{
-            height: "40px",
-            width: "100%",
-            backgroundImage: `
-              linear-gradient(#3f4c38 1px, transparent 1px),
-              linear-gradient(90deg, #3f4c38 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-            backgroundColor: "#F7F4E9",
-            borderBottom: "2px solid black",
-          }}
-        />
-
-        {/* Main content frame */}
+        {/* Main content frame - no grid lines */}
         <div className="relative bg-white p-6 sm:p-8 lg:p-10">
           {/* Joystick Button - positioned relative to this container */}
           <div className="absolute top-4 right-4 z-10">
@@ -392,7 +377,7 @@ const RoundedCTASection = () => (
             {/* Right Side: Content */}
             <div className="w-full lg:w-1/2 lg:pl-8 flex flex-col justify-center text-center lg:text-left">
               <h2
-                className="font-bold mb-4 sm:mb-6 text-2xl sm:text-3xl lg:text-4xl font-oswald"
+                className="font-bold mb-4 sm:mb-6 text-xl sm:text-2xl font-oswald"
                 style={{
                   lineHeight: "1.2",
                   color: "#3f4c38",
@@ -403,7 +388,7 @@ const RoundedCTASection = () => (
                 <span style={{ color: "#f87a30" }}>together.</span>
               </h2>
               <p
-                className="mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg font-space-grotesk"
+                className="mb-6 sm:mb-8 text-base sm:text-lg font-space-grotesk"
                 style={{
                   lineHeight: "1.7",
                   color: "#3f4c38",

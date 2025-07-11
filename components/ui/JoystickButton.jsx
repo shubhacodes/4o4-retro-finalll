@@ -22,14 +22,13 @@ const JoystickButton = ({ gameId = 1, className = "" }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`
-        fixed top-6 right-6 z-50
-        w-12 h-12 rounded-full
-        bg-white/10 backdrop-blur-sm
-        border border-white/20
+        w-12 h-12 rounded-lg
+        bg-white
+        border-2 border-black
         flex items-center justify-center
         transition-all duration-300 ease-in-out
-        hover:bg-white/20 hover:border-white/40
-        hover:scale-110
+        hover:bg-gray-50
+        hover:scale-105
         ${isHovered ? "animate-pulse" : ""}
         ${className}
       `}

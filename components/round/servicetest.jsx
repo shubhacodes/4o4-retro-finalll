@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import useSound from "@/hooks/use-sound";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const ServiceCard = ({
   title,
@@ -27,11 +28,11 @@ const ServiceCard = ({
         {/* Orange Header */}
         <div className="h-[56px] border-b-2 border-[#3f4c38] relative bg-[#8abdb3]">
           {/* Plus/Minus Button */}
-          <div className="absolute right-6 top-1/2 -translate-y-1/2">
+          <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2">
             {/* Main Button */}
             <button
               onClick={toggleExpanded}
-              className="relative w-8 h-8 bg-white rounded-full border-2 border-[#3f4c38] flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-200"
+              className="relative w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full border-2 border-[#3f4c38] flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-200"
             >
               {/* Plus/Minus Icon */}
               <div className="relative">
@@ -47,14 +48,14 @@ const ServiceCard = ({
         </div>
 
         {/* Card Content */}
-        <div className="px-6 py-5">
+        <div className="px-4 sm:px-6 py-4 sm:py-5">
           {/* Title */}
-          <h3 className="text-2xl font-bold text-[#3f4c38] mb-1 leading-tight font-oswald">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#3f4c38] mb-1 leading-tight font-oswald">
             {title}
           </h3>
 
           {/* Description */}
-          <p className="text-lg text-[#3f4c38] mb-4 font-space-grotesk leading-relaxed">
+          <p className="text-base sm:text-lg text-[#3f4c38] mb-4 font-space-grotesk leading-relaxed">
             {description}
           </p>
 
@@ -66,49 +67,51 @@ const ServiceCard = ({
           >
             {/* Separator Line */}
             <div
-              className={`w-full h-0.5 bg-[#3f4c38] mb-6 transition-opacity duration-500 ${
+              className={`w-full h-0.5 bg-[#3f4c38] mb-4 sm:mb-6 transition-opacity duration-500 ${
                 isExpanded ? "opacity-100 delay-200" : "opacity-0"
               }`}
             />
 
             {/* Content Area */}
             <div
-              className={`flex gap-6 transition-all duration-500 ease-out delay-300 ${
+              className={`flex flex-col lg:flex-row gap-4 sm:gap-6 transition-all duration-500 ease-out delay-300 ${
                 isExpanded
                   ? "translate-y-0 opacity-100"
                   : "-translate-y-10 opacity-0"
               }`}
             >
-              {/* Left Side - Service Tags */}
-              <div className="w-1/5 flex flex-col gap-3 items-start">
-                {expandedContent?.tags?.map((tag, index) => {
-                  const delayClasses = [
-                    "delay-[400ms]",
-                    "delay-[460ms]",
-                    "delay-[520ms]",
-                    "delay-[580ms]",
-                  ];
-                  return (
-                    <div
-                      key={index}
-                      className={`bg-transparent border-2 border-[#3f4c38] px-4 py-2 text-xs font-bold text-[#3f4c38] rounded-full hover:scale-105 transition-all duration-200 font-space-grotesk ${
-                        delayClasses[index] || "delay-[400ms]"
-                      } ${
-                        isExpanded
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-5 opacity-0"
-                      }`}
-                    >
-                      {tag}
-                    </div>
-                  );
-                })}
+              {/* Service Tags - Top on mobile, Left on desktop */}
+              <div className="w-full lg:w-1/5 mb-4 lg:mb-0">
+                <div className="flex flex-wrap lg:flex-col gap-2 lg:gap-3 justify-center lg:justify-start lg:items-start">
+                  {expandedContent?.tags?.map((tag, index) => {
+                    const delayClasses = [
+                      "delay-[400ms]",
+                      "delay-[460ms]",
+                      "delay-[520ms]",
+                      "delay-[580ms]",
+                    ];
+                    return (
+                      <div
+                        key={index}
+                        className={`bg-transparent border-2 border-[#3f4c38] px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-bold text-[#3f4c38] rounded-full hover:scale-105 transition-all duration-200 font-space-grotesk ${
+                          delayClasses[index] || "delay-[400ms]"
+                        } ${
+                          isExpanded
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-5 opacity-0"
+                        }`}
+                      >
+                        {tag}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* Right Side - Retro YouTube Style Content */}
-              <div className="w-4/5 flex flex-col">
+              {/* Main Content - Bottom on mobile, Right on desktop */}
+              <div className="w-full lg:w-4/5 flex flex-col">
                 <div
-                  className={`bg-white rounded-lg p-4 border-2 border-[#3f4c38] transition-all duration-350 ease-out delay-[450ms] flex flex-col ${
+                  className={`bg-white rounded-lg p-3 sm:p-4 border-2 border-[#3f4c38] transition-all duration-350 ease-out delay-[450ms] flex flex-col ${
                     isExpanded
                       ? "translate-y-0 opacity-100"
                       : "translate-y-8 opacity-0"
@@ -116,7 +119,7 @@ const ServiceCard = ({
                 >
                   {/* Big Video Thumbnail */}
                   <div
-                    className={`w-full h-32 bg-gray-300 border-2 border-gray-400 rounded-lg flex items-center justify-center text-lg text-gray-600 font-space-grotesk mb-4 transition-all duration-350 ease-out delay-[550ms] ${
+                    className={`w-full h-24 sm:h-32 bg-gray-300 border-2 border-gray-400 rounded-lg flex items-center justify-center text-sm sm:text-lg text-gray-600 font-space-grotesk mb-3 sm:mb-4 transition-all duration-350 ease-out delay-[550ms] ${
                       isExpanded
                         ? "translate-y-0 opacity-100"
                         : "translate-y-9 opacity-0"
@@ -134,12 +137,12 @@ const ServiceCard = ({
                     }`}
                   >
                     {/* Video Title */}
-                    <h4 className="text-[#3f4c38] text-lg font-bold mb-2 font-oswald">
+                    <h4 className="text-[#3f4c38] text-base sm:text-lg font-bold mb-2 font-oswald">
                       {title} - Behind the Scenes
                     </h4>
 
                     {/* Video Description */}
-                    <p className="text-[#3f4c38] text-sm leading-relaxed font-space-grotesk mb-3">
+                    <p className="text-[#3f4c38] text-xs sm:text-sm leading-relaxed font-space-grotesk mb-3">
                       {expandedContent?.description}
                     </p>
                   </div>
@@ -200,19 +203,17 @@ export default function ServiceTest() {
   ];
 
   return (
-    <section className="w-full py-12 bg-[#ffc943] relative">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#3f4c38] mb-6 leading-tight font-oswald">
-            SERVICES.
-          </h2>
-
-          <p className="text-[#3f4c38] mt-6 text-lg font-space-grotesk max-w-2xl mx-auto leading-relaxed">
-            Enhanced design with rounded edges and beautiful styling.
-          </p>
+    <section className="w-full py-8 sm:py-12 bg-[#ffc943] relative">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-12 sm:mb-16">
+          <SectionHeader
+            mainHeading="We build brands, not just stuff."
+            subLabel="Services"
+            className="mb-6 sm:mb-8"
+          />
         </div>
 
-        <div className="flex flex-col items-center space-y-8">
+        <div className="flex flex-col items-center space-y-6 sm:space-y-8">
           {services.map((service, index) => (
             <ServiceCard
               key={index}

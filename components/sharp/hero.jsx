@@ -19,14 +19,14 @@ export default function Hero() {
 
   return (
     <section className="w-full" style={{ backgroundColor: "#DE6A48" }}>
-      <div className="mx-auto max-w-[1150px] px-8 py-16">
-        <div className="flex items-center gap-12 min-h-[600px]">
+      <div className="mx-auto max-w-[1150px] px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12 min-h-[500px] sm:min-h-[600px]">
           {/* Left Side - Text Content */}
-          <div className="flex-1 flex flex-col justify-center space-y-8">
+          <div className="flex-1 flex flex-col justify-center space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
             {/* Destiny Tagline */}
-            <div>
+            <div className="flex justify-center lg:justify-start">
               <div
-                className="inline-block px-4 py-3 text-white font-bold text-sm tracking-wide rounded-lg"
+                className="inline-block px-3 sm:px-4 py-2 sm:py-3 text-white font-bold text-xs sm:text-sm tracking-wide rounded-lg"
                 style={{ backgroundColor: "#000000" }}
               >
                 DESTINY DRESSES LIKE AN ERROR, SOMETIMES.
@@ -34,14 +34,14 @@ export default function Hero() {
             </div>
 
             {/* Main Headlines */}
-            <div className="space-y-4">
+            <div className="space-y-2 sm:space-y-4">
               {/* WRONG TURN */}
               <div className="relative">
                 {/* Black shadow text */}
                 <h1
-                  className="absolute font-bold leading-none translate-x-1 translate-y-1"
+                  className="absolute font-bold leading-none translate-x-0.5 translate-y-0.5 sm:translate-x-1 sm:translate-y-1"
                   style={{
-                    fontSize: "clamp(3rem, 8vw, 4.5rem)",
+                    fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
                     color: "#000000",
                     fontFamily: "var(--font-oswald)",
                   }}
@@ -52,7 +52,7 @@ export default function Hero() {
                 <h1
                   className="relative font-bold leading-none"
                   style={{
-                    fontSize: "clamp(3rem, 8vw, 4.5rem)",
+                    fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
                     color: "#5a0079",
                     WebkitTextStroke: "1px #000000",
                     fontFamily: "var(--font-oswald)",
@@ -66,9 +66,9 @@ export default function Hero() {
               <div className="relative">
                 {/* Black shadow text */}
                 <h1
-                  className="absolute font-bold leading-none translate-x-1 translate-y-1"
+                  className="absolute font-bold leading-none translate-x-0.5 translate-y-0.5 sm:translate-x-1 sm:translate-y-1"
                   style={{
-                    fontSize: "clamp(3rem, 8vw, 4.5rem)",
+                    fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
                     color: "#000000",
                     fontFamily: "var(--font-oswald)",
                   }}
@@ -79,7 +79,7 @@ export default function Hero() {
                 <h1
                   className="relative font-bold leading-none"
                   style={{
-                    fontSize: "clamp(3rem, 8vw, 4.5rem)",
+                    fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
                     color: "#00796B",
                     WebkitTextStroke: "1px #000000",
                     fontFamily: "var(--font-oswald)",
@@ -91,9 +91,9 @@ export default function Hero() {
             </div>
 
             {/* Description */}
-            <div className="max-w-lg">
+            <div className="max-w-md sm:max-w-lg mx-auto lg:mx-0">
               <p
-                className="text-xl leading-relaxed"
+                className="text-base sm:text-lg lg:text-xl leading-relaxed"
                 style={{
                   color: "#F7F4E9",
                   fontFamily: "var(--font-space-grotesk)",
@@ -105,10 +105,10 @@ export default function Hero() {
             </div>
 
             {/* CTA Button */}
-            <div className="relative inline-block">
+            <div className="relative inline-block mx-auto lg:mx-0">
               {/* Black shadow button */}
               <button
-                className="absolute px-6 py-3 font-bold text-lg border-2 translate-x-1 translate-y-1 cursor-pointer rounded-lg"
+                className="absolute px-4 sm:px-6 py-2 sm:py-3 font-bold text-sm sm:text-base lg:text-lg border-2 translate-x-0.5 translate-y-0.5 sm:translate-x-1 sm:translate-y-1 cursor-pointer rounded-lg"
                 style={{
                   backgroundColor: "#000000",
                   borderColor: "#000000",
@@ -120,7 +120,7 @@ export default function Hero() {
               </button>
               {/* Main button */}
               <button
-                className="relative px-6 py-3 font-bold text-black border-2 border-black text-lg hover:transform hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer active:translate-x-1 active:translate-y-1 rounded-lg"
+                className="relative px-4 sm:px-6 py-2 sm:py-3 font-bold text-black border-2 border-black text-sm sm:text-base lg:text-lg hover:transform hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer active:translate-x-0.5 active:translate-y-0.5 sm:active:translate-x-1 sm:active:translate-y-1 rounded-lg"
                 style={{
                   backgroundColor: "#FFB600",
                   fontFamily: "var(--font-oswald)",
@@ -133,12 +133,12 @@ export default function Hero() {
           </div>
 
           {/* Right Side - Images */}
-          <div className="flex-1 flex items-center justify-center">
-            <div className="relative max-w-2xl w-full">
+          <div className="flex-1 flex items-center justify-center order-1 lg:order-2 mb-4 lg:mb-0">
+            <div className="relative max-w-sm sm:max-w-md lg:max-w-2xl w-full">
               <img
                 src="/landing-page/hero-image.png"
                 alt="Retro computer setup"
-                className="w-full h-auto scale-110"
+                className="w-full h-auto scale-100 sm:scale-105 lg:scale-110"
               />
             </div>
           </div>

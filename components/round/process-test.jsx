@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import useSound from "@/hooks/use-sound";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 // Manual Process Section - Click-only navigation with larger illustrations
 export function ProcessTestSoft() {
@@ -36,27 +37,28 @@ export function ProcessTestSoft() {
 
   return (
     <section className="w-full" style={{ backgroundColor: "#F7F4E9" }}>
-      <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12 lg:py-16 xl:py-20">
         <div className="flex flex-col items-center justify-center">
-          {/* Header */}
-          <h1 className="font-bold mb-8 lg:mb-12 text-center text-2xl sm:text-3xl lg:text-4xl font-oswald text-black leading-tight transform transition-all duration-700 ease-out">
-            Our process
-          </h1>
+          <SectionHeader
+            mainHeading="From idea to 'damn, that's good!'"
+            subLabel="Our Process"
+            className="mb-6 sm:mb-8 lg:mb-12"
+          />
 
           {/* Main Container */}
           <div className="relative w-full">
             {/* Main content area */}
-            <div className="relative bg-white border-2 border-black w-full min-h-[400px] lg:h-[480px] p-6 lg:p-10 rounded-lg">
+            <div className="relative bg-white border-2 border-black w-full min-h-[320px] sm:min-h-[360px] lg:h-[420px] p-4 sm:p-6 lg:p-10 rounded-lg">
               <div className="h-full flex flex-col justify-center">
                 {/* Content Area */}
-                <div className="flex flex-col lg:flex-row flex-1 relative items-center gap-8 lg:gap-12">
+                <div className="flex flex-col lg:flex-row flex-1 relative items-center gap-6 sm:gap-8 lg:gap-12">
                   {/* Left: Expandable Cards */}
-                  <div className="w-full lg:w-1/2 lg:pr-8">
-                    <div className="space-y-4">
+                  <div className="w-full lg:w-1/2 lg:pr-4 xl:pr-8">
+                    <div className="space-y-3 sm:space-y-4">
                       {tabData.map((tab) => (
                         <div
                           key={tab.id}
-                          className="border-2 border-black rounded-lg bg-white overflow-hidden transform transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg"
+                          className="border-2 border-black rounded-lg bg-white overflow-hidden transform transition-all duration-300 ease-out hover:scale-[1.01] sm:hover:scale-[1.02] hover:shadow-lg"
                         >
                           {/* Card Header */}
                           <button
@@ -66,20 +68,20 @@ export function ProcessTestSoft() {
                                 activeCard === tab.id ? null : tab.id
                               );
                             }}
-                            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-all duration-300 ease-out"
+                            className="w-full px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-all duration-300 ease-out"
                           >
-                            <h3 className="font-bold text-lg sm:text-xl font-oswald text-black">
+                            <h3 className="font-bold text-base sm:text-lg lg:text-xl font-oswald text-black">
                               {tab.title}
                             </h3>
                             <div
-                              className={`w-8 h-8 rounded-full border-2 border-black flex items-center justify-center transition-all duration-500 ease-out transform ${
+                              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-black flex items-center justify-center transition-all duration-500 ease-out transform ${
                                 activeCard === tab.id
                                   ? "rotate-45 bg-black"
                                   : "hover:bg-gray-100"
                               }`}
                             >
                               <span
-                                className={`font-bold text-xl transition-colors duration-300 ${
+                                className={`font-bold text-lg sm:text-xl transition-colors duration-300 ${
                                   activeCard === tab.id
                                     ? "text-white"
                                     : "text-black"
@@ -98,8 +100,8 @@ export function ProcessTestSoft() {
                                 : "max-h-0 opacity-0"
                             }`}
                           >
-                            <div className="px-6 pb-6 transform transition-transform duration-500 ease-out">
-                              <p className="text-base sm:text-lg leading-relaxed text-black font-space-grotesk">
+                            <div className="px-4 sm:px-6 pb-4 sm:pb-6 transform transition-transform duration-500 ease-out">
+                              <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black font-space-grotesk">
                                 {tab.content}
                               </p>
                             </div>
@@ -110,8 +112,8 @@ export function ProcessTestSoft() {
                   </div>
 
                   {/* Right: Standalone Process Illustration */}
-                  <div className="w-full lg:w-1/2 relative flex items-center justify-center">
-                    <div className="relative w-[350px] h-[280px] sm:w-[450px] sm:h-[360px] lg:w-[550px] lg:h-[440px]">
+                  <div className="w-full lg:w-1/2 relative flex items-center justify-center mt-4 lg:mt-0">
+                    <div className="relative w-[280px] h-[220px] sm:w-[320px] sm:h-[250px] md:w-[360px] md:h-[280px] lg:w-[380px] lg:h-[300px] xl:w-[400px] xl:h-[320px]">
                       <Image
                         src={
                           currentTabData
@@ -125,7 +127,8 @@ export function ProcessTestSoft() {
                         }
                         fill
                         className="object-contain transition-all duration-500 ease-out"
-                        sizes="(max-width: 640px) 350px, (max-width: 1024px) 450px, 550px"
+                        sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
+                        priority
                       />
                     </div>
                   </div>

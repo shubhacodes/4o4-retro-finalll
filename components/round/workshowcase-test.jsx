@@ -4,6 +4,7 @@ import { X, Maximize2, RotateCcw } from "lucide-react";
 import Image from "next/image";
 import useSound from "@/hooks/use-sound";
 import JoystickButton from "@/components/ui/JoystickButton";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 export const Frame3416 = ({
   title,
@@ -32,9 +33,9 @@ export const Frame3416 = ({
     <div
       className="relative bg-transparent flex-shrink-0"
       style={{
-        width: "clamp(260px, 60vw, 380px)", // Keep width same
-        height: "clamp(320px, 65vw, 420px)", // Increased height for new layout
-        minWidth: "260px", // Keep minimum width
+        width: "clamp(300px, 35vw, 420px)", // Optimized for mobile
+        height: "clamp(340px, 42vw, 520px)", // Adjusted for mobile
+        minWidth: "300px", // Reduced minimum for smaller screens
       }}
     >
       {/* Main container - responsive scaling */}
@@ -44,7 +45,7 @@ export const Frame3416 = ({
           className="absolute border-t border-l border-r border-black rounded-t-lg"
           style={{
             width: "calc(100% - 8px)",
-            height: "clamp(50px, 18%, 70px)", // Keep header height
+            height: "clamp(45px, 14%, 55px)", // Increased header height for larger cards
             left: "0px",
             top: "0px",
             backgroundColor: "#f87a30",
@@ -58,7 +59,7 @@ export const Frame3416 = ({
             width: "calc(100% - 8px)",
             height: "2px",
             left: "0px",
-            top: "clamp(50px, 18%, 70px)", // Matches header height
+            top: "clamp(45px, 14%, 55px)", // Matches header height
           }}
         />
 
@@ -67,7 +68,7 @@ export const Frame3416 = ({
           className="absolute bg-white rounded-b-lg border-l border-r border-b border-black"
           style={{
             left: "0px",
-            top: "clamp(52px, 18.2%, 72px)", // Just below header separator
+            top: "clamp(47px, 14.2%, 57px)", // Just below header separator
             width: "calc(100% - 8px)",
             bottom: "0px",
           }}
@@ -75,51 +76,50 @@ export const Frame3416 = ({
 
         {/* Header content - company name */}
         <div
-          className="absolute text-black overflow-hidden px-4 py-3 flex items-center"
+          className="absolute text-black overflow-hidden px-3 sm:px-4 py-2 sm:py-3 flex items-center"
           style={{
             left: "0px",
             top: "0px",
-            width: "calc(100% - 80px)", // Leave space for buttons
-            height: "clamp(50px, 18%, 70px)", // Matches header height
+            width: "calc(100% - 70px)", // Adjusted space for smaller buttons
+            height: "clamp(45px, 14%, 55px)", // Matches header height
           }}
         >
-          <h3 className="font-bold text-lg sm:text-xl lg:text-2xl font-oswald leading-tight truncate">
+          <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-oswald leading-tight truncate">
             {title}
           </h3>
         </div>
 
         {/* Content container - restructured layout */}
         <div
-          className="absolute text-black overflow-hidden px-5 py-4 flex flex-col"
+          className="absolute text-black overflow-hidden px-3 sm:px-4 py-2 sm:py-3 flex flex-col"
           style={{
             left: "0px",
-            top: "clamp(62px, 22%, 82px)", // Below header with padding
+            top: "clamp(57px, 18%, 67px)", // Below header with appropriate padding
             width: "calc(100% - 8px)",
-            height: "calc(100% - clamp(62px, 22%, 82px) - 10px)", // Fill remaining space with bottom padding
+            height: "calc(100% - clamp(57px, 18%, 67px) - 8px)", // Fill remaining space with appropriate bottom padding
           }}
         >
-          {/* Company logo - image section with hover effect */}
+          {/* Company logo - image section with hover effect - Much larger now */}
           <div
-            className="flex-1 mb-4 flex items-center justify-center"
+            className="mb-3 flex items-center justify-center"
+            style={{ height: "calc(100% - 90px)" }} // Take most of the available space, adjusted for even taller card
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="relative w-full h-full flex items-center justify-center p-2">
-              <div className="relative inline-block">
+            <div className="relative w-full h-full flex items-center justify-center p-1">
+              <div className="relative inline-block w-full h-full">
                 <Image
                   key={isHovered ? "color" : "bw"}
                   src={isHovered ? imageColor : imageBW}
                   alt={`${title} logo`}
-                  width={320}
-                  height={200}
+                  width={400}
+                  height={300}
                   priority
                   unoptimized
                   className="object-cover transition-all duration-500 ease-in-out rounded-lg border border-black bg-white"
                   style={{
                     width: "100%",
-                    height: "160px",
-                    minHeight: "160px",
-                    maxHeight: "160px",
+                    height: "100%",
                     filter: isHovered ? "none" : "grayscale(100%)",
                     transform: isHovered ? "scale(1.02)" : "scale(1)",
                     boxShadow: isHovered
@@ -131,17 +131,20 @@ export const Frame3416 = ({
             </div>
           </div>
 
-          {/* Separator line */}
-          <div className="w-full h-px bg-black mb-4 flex-none"></div>
+          {/* Separator line - thinner and less margin */}
+          <div className="w-full h-px bg-black mb-2 flex-none"></div>
 
-          {/* Work done tags - bottom section */}
+          {/* Work done tags - bottom section - appropriately sized for even taller cards */}
           {tagline && (
-            <div className="flex-none">
-              <div className="flex flex-wrap gap-1.5">
+            <div
+              className="flex-none"
+              style={{ height: "75px", overflow: "hidden" }}
+            >
+              <div className="flex flex-wrap gap-1 sm:gap-1.5">
                 {tagline.split(", ").map((tag, index) => (
                   <span
                     key={index}
-                    className="inline-block bg-transparent border border-black text-black text-xs sm:text-sm font-space-grotesk font-medium px-3 py-1.5 rounded-full"
+                    className="inline-block bg-transparent border border-black text-black text-xs font-space-grotesk px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full"
                   >
                     {tag.trim()}
                   </span>
@@ -157,30 +160,30 @@ export const Frame3416 = ({
       <button
         className="absolute bg-white border border-black rounded-full hover:bg-gray-50 transition-all duration-200 flex items-center justify-center cursor-pointer transform hover:scale-105"
         style={{
-          width: "clamp(22px, 5vw, 30px)",
-          height: "clamp(22px, 5vw, 30px)",
-          right: "clamp(12px, 4%, 24px)",
-          top: "clamp(10px, 4%, 22px)",
+          width: "clamp(22px, 4vw, 30px)",
+          height: "clamp(22px, 4vw, 30px)",
+          right: "clamp(8px, 3%, 16px)",
+          top: "clamp(6px, 2%, 12px)",
         }}
         onClick={handleClose}
         title="Remove Card"
       >
-        <X size={14} className="text-black sm:w-4 sm:h-4" />
+        <X size={14} className="text-black" />
       </button>
 
       {/* Expand button - top right - with completely rounded edges */}
       <button
         className="absolute bg-white border border-black rounded-full hover:bg-gray-50 transition-all duration-200 flex items-center justify-center cursor-pointer transform hover:scale-105"
         style={{
-          width: "clamp(22px, 5vw, 30px)",
-          height: "clamp(22px, 5vw, 30px)",
-          right: "clamp(44px, 13%, 68px)",
-          top: "clamp(10px, 4%, 22px)",
+          width: "clamp(22px, 4vw, 30px)",
+          height: "clamp(22px, 4vw, 30px)",
+          right: "clamp(38px, 12%, 54px)",
+          top: "clamp(6px, 2%, 12px)",
         }}
         onClick={handleExpand}
         title="View More Details"
       >
-        <Maximize2 size={14} className="text-black sm:w-4 sm:h-4" />
+        <Maximize2 size={14} className="text-black" />
       </button>
     </div>
   );
@@ -328,12 +331,15 @@ const ExpandedDialog = ({ project, onClose }) => {
             </div>
 
             {/* Right Side - Typography & Colours Design Card */}
-            <div className="flex flex-col h-fit">
+            <div
+              className="flex flex-col"
+              style={{ height: "clamp(360px, 45vh, 510px)" }}
+            >
               {/* Main Typography & Colours Card */}
-              <div className="bg-white border border-black rounded-lg overflow-hidden h-fit">
+              <div className="bg-white border border-black rounded-lg overflow-hidden h-full flex flex-col">
                 {/* Header */}
                 <div className="bg-[#f87a30] border-b border-black p-2 sm:p-3 flex items-center relative">
-                  <h4 className="text-base sm:text-lg font-bold font-oswald text-black">
+                  <h4 className="text-base sm:text-lg  font-oswald text-black">
                     Typography & Colours
                   </h4>
                   {/* Orange accent border on left - darker orange for contrast */}
@@ -341,7 +347,7 @@ const ExpandedDialog = ({ project, onClose }) => {
                 </div>
 
                 {/* Content Grid */}
-                <div className="p-3 grid grid-cols-2 gap-4 h-fit">
+                <div className="p-3 grid grid-cols-2 gap-4 flex-1">
                   {/* Left Side - Typography */}
                   <div className="space-y-3">
                     {/* Main Typography Display */}
@@ -599,47 +605,38 @@ export default function WorkShowcaseTest() {
       style={{ backgroundColor: "#F7F4E9" }}
     >
       {/* Top Right Button Group */}
-      <div className="absolute top-6 right-6 z-30 flex items-center gap-3">
+      <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30 flex items-center gap-1 sm:gap-2">
         {/* BRING THEM BACK Button - Only show when cards are hidden */}
         {hiddenCards.size > 0 && (
           <button
             onClick={refreshCards}
-            className="bg-white border-2 border-black text-black px-4 py-2 hover:bg-gray-50 transition-all duration-200 font-bold text-sm transform hover:scale-105 flex items-center gap-2 group rounded-lg h-12"
+            className="bg-white border-2 border-black text-black px-2 sm:px-4 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm transform hover:scale-105 flex items-center gap-1 sm:gap-2 group rounded-lg h-10 sm:h-12"
             title="Bring back all projects"
             style={{
               animation: "slideInFromLeft 0.3s ease-out",
             }}
           >
             <RotateCcw
-              size={14}
-              className="text-[#DE6A48] group-hover:rotate-180 transition-transform duration-300"
+              size={12}
+              className="text-[#DE6A48] group-hover:rotate-180 transition-transform duration-300 sm:w-[14px] sm:h-[14px]"
             />
-            <span>BRING THEM BACK</span>
+            <span className="hidden sm:inline">BRING THEM BACK</span>
+            <span className="sm:hidden">BACK</span>
           </button>
         )}
 
         {/* Joystick Button */}
-        <JoystickButton
-          gameId={2}
-          className="relative bottom-auto right-auto"
-        />
+        <JoystickButton gameId={1} className="flex-shrink-0" />
       </div>
 
       {/* Responsive container with generous padding */}
-      <div className="mx-auto max-w-7xl w-full px-6 py-12 sm:py-16 lg:py-20 flex-grow flex flex-col">
+      <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 py-8 sm:py-12 lg:py-16 xl:py-20 flex-grow flex flex-col">
         <div className="flex flex-col items-center justify-center">
-          {/* Responsive title */}
-          <h1
-            className="font-bold mb-6 sm:mb-8 text-center text-2xl sm:text-3xl lg:text-4xl font-oswald text-black leading-tight"
-            style={{
-              marginBottom: "clamp(20px, 4vw, 32px)",
-            }}
-          >
-            WORK SHOWCASE.
-          </h1>
-          <p className="mb-8 sm:mb-10 lg:mb-12 text-sm sm:text-base lg:text-lg font-space-grotesk text-center max-w-2xl">
-            Enhanced version with rounded edges and beautiful styling
-          </p>
+          <SectionHeader
+            mainHeading="See what we've been cooking."
+            subLabel="Work Showcase"
+            className="mb-8 sm:mb-10 lg:mb-12"
+          />
 
           {/* Carousel Layout - responsive */}
           <div className="w-full relative">
@@ -671,7 +668,7 @@ export default function WorkShowcaseTest() {
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
                 WebkitOverflowScrolling: "touch",
-                maxWidth: "1400px", // Increased to show more cards
+                maxWidth: "1000px", // Optimized for mobile card sizes
                 margin: "0 auto",
                 cursor: isDragging ? "grabbing" : "grab",
                 userSelect: isDragging ? "none" : "auto",
@@ -690,11 +687,11 @@ export default function WorkShowcaseTest() {
             >
               {/* Cards container - reduced gaps and padding */}
               <div
-                className="flex gap-3 sm:gap-4 lg:gap-6 justify-start pb-8 sm:pb-10"
+                className="flex gap-2 sm:gap-3 lg:gap-4 xl:gap-6 justify-start pb-6 sm:pb-8 lg:pb-10"
                 style={{
                   width: "fit-content",
-                  paddingLeft: "clamp(20px, 5vw, 40px)",
-                  paddingRight: "clamp(20px, 5vw, 40px)",
+                  paddingLeft: "clamp(16px, 4vw, 32px)",
+                  paddingRight: "clamp(16px, 4vw, 32px)",
                 }}
               >
                 {cardData.map((card, index) => {

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { StandardCTAButton } from "./cta-test";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function PricingTest() {
   const [billingCycle, setBillingCycle] = useState("monthly");
@@ -61,21 +62,20 @@ export default function PricingTest() {
       className="w-full py-8 sm:py-10 lg:py-20"
       style={{ backgroundColor: "#8abdb3" }}
     >
-      <div className="mx-auto max-w-6xl px-6 w-full">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="text-center mb-6 sm:mb-8 lg:mb-12">
-          <h1 className="font-bold mb-3 sm:mb-4 lg:mb-6 text-2xl sm:text-3xl lg:text-4xl font-oswald text-[#3f4c38]">
-            CHOOSE YOUR PLAN
-          </h1>
-          <p className="text-base sm:text-lg font-space-grotesk text-[#3f4c38] max-w-3xl mx-auto mb-4 sm:mb-6 lg:mb-8 px-4">
-            Everything you need to build a brand that stands out from the crowd.
-          </p>
+          <SectionHeader
+            mainHeading="Good work costs, great work pays."
+            subLabel="Pricing"
+            className="mb-4 sm:mb-6 lg:mb-8"
+          />
 
           {/* Billing Toggle */}
           <div className="flex justify-center">
             <div className="bg-white border-2 border-black rounded-lg p-0.5 flex">
               <button
                 onClick={() => setBillingCycle("monthly")}
-                className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold font-oswald transition-all duration-200 rounded-md text-xs sm:text-sm ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold font-oswald transition-all duration-200 rounded-md text-base sm:text-lg ${
                   billingCycle === "monthly"
                     ? "bg-[#FFB600] text-black"
                     : "bg-transparent text-[#3f4c38] hover:bg-white"
@@ -85,7 +85,7 @@ export default function PricingTest() {
               </button>
               <button
                 onClick={() => setBillingCycle("yearly")}
-                className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold font-oswald transition-all duration-200 rounded-md text-xs sm:text-sm ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold font-oswald transition-all duration-200 rounded-md text-base sm:text-lg ${
                   billingCycle === "yearly"
                     ? "bg-[#FFB600] text-black"
                     : "bg-transparent text-[#3f4c38] hover:bg-white"
@@ -96,7 +96,7 @@ export default function PricingTest() {
             </div>
           </div>
           {billingCycle === "yearly" && (
-            <p className="text-[#3f4c38] font-bold mt-2 sm:mt-3 font-space-grotesk text-xs sm:text-sm">
+            <p className="text-[#3f4c38] font-bold mt-2 sm:mt-3 font-space-grotesk text-base sm:text-lg">
               Save up to 25% with yearly billing!
             </p>
           )}
@@ -126,7 +126,7 @@ export default function PricingTest() {
               >
                 {/* Header */}
                 <div className="text-center mb-3 sm:mb-4 lg:mb-6">
-                  <h3 className="font-bold text-base sm:text-lg lg:text-xl font-oswald mb-2 sm:mb-3 lg:mb-4 text-[#3f4c38]">
+                  <h3 className="font-bold text-xl sm:text-2xl font-oswald mb-2 sm:mb-3 lg:mb-4 text-[#3f4c38]">
                     {plan.name}
                   </h3>
                   <div className="mb-3 sm:mb-4 lg:mb-5">
@@ -136,11 +136,11 @@ export default function PricingTest() {
                         ? plan.monthlyPrice
                         : plan.yearlyPrice}
                     </span>
-                    <span className="text-sm sm:text-base lg:text-lg font-space-grotesk text-[#3f4c38]">
+                    <span className="text-base sm:text-lg font-space-grotesk text-[#3f4c38]">
                       /{billingCycle === "monthly" ? "month" : "year"}
                     </span>
                   </div>
-                  <p className="font-space-grotesk text-xs sm:text-sm lg:text-lg leading-relaxed text-[#3f4c38]">
+                  <p className="font-space-grotesk text-base sm:text-lg leading-relaxed text-[#3f4c38]">
                     {plan.description}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export default function PricingTest() {
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
                         <div className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 rounded-full bg-[#ffc943] border border-black flex-shrink-0 mt-0.5 mr-2 sm:mr-2 lg:mr-3" />
-                        <span className="font-space-grotesk text-xs sm:text-sm lg:text-lg text-[#3f4c38] leading-relaxed">
+                        <span className="font-space-grotesk text-base sm:text-lg text-[#3f4c38] leading-relaxed">
                           {feature}
                         </span>
                       </li>
@@ -176,7 +176,7 @@ export default function PricingTest() {
 
         {/* Bottom CTA */}
         <div className="text-center">
-          <p className="text-sm sm:text-base lg:text-lg font-space-grotesk text-[#3f4c38] mb-3 sm:mb-4 px-4">
+          <p className="text-base sm:text-lg font-space-grotesk text-[#3f4c38] mb-3 sm:mb-4 px-4">
             Need a custom solution? Let's talk about your specific needs.
           </p>
           <StandardCTAButton

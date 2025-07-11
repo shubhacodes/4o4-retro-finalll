@@ -9,6 +9,7 @@ import {
   UserPlus,
 } from "lucide-react";
 import { CHAT_CONVERSATIONS, FOLDER_ITEMS } from "../../data/about-data";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 // Retro computer sound generation using Web Audio API
 const createRetroSounds = () => {
@@ -550,7 +551,7 @@ const AboutUsPanelSoft = () => {
         {/* Navigation Sidebar */}
         <nav
           className={`
-          fixed md:relative top-0 md:top-0 left-0 h-full w-64 md:w-1/4 p-4 overflow-y-auto z-50 transform transition-transform duration-300 ease-in-out border-r-2
+          fixed md:relative top-0 md:top-0 left-0 h-full w-72 sm:w-80 md:w-1/4 p-3 sm:p-4 overflow-y-auto z-50 transform transition-transform duration-300 ease-in-out border-r-2
           ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
           }
@@ -615,34 +616,36 @@ const AboutUsPanelSoft = () => {
         >
           {/* Retro Chat Header */}
           <div
-            className="p-4 border-b-2 font-mono"
+            className="p-3 sm:p-4 border-b-2 font-mono"
             style={{
               backgroundColor: theme.colors.messageBoxBg,
               borderBottomColor: theme.colors.border,
             }}
           >
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 sm:space-x-2">
               <span
-                className="text-lg font-bold"
+                className="text-sm sm:text-base lg:text-lg font-bold"
                 style={{ color: theme.colors.textSecondary }}
               >
                 [{selectedItem.replace("#", "").toUpperCase()}]
               </span>
               <span
-                className="text-sm"
+                className="text-xs sm:text-sm"
                 style={{ color: theme.colors.textPrimary }}
               >
                 - TERMINAL SESSION
               </span>
             </div>
             <div
-              className="text-xs mt-1 flex items-center space-x-2"
+              className="text-xs mt-1 flex items-center space-x-1 sm:space-x-2"
               style={{ color: theme.colors.textPrimary }}
             >
               <span>●</span>
-              <span>LIVE CONVERSATION FEED</span>
+              <span className="hidden sm:inline">LIVE CONVERSATION FEED</span>
+              <span className="sm:hidden">LIVE FEED</span>
               <span>●</span>
-              <span>FOUNDING PARTNERS</span>
+              <span className="hidden sm:inline">FOUNDING PARTNERS</span>
+              <span className="sm:hidden">FOUNDERS</span>
             </div>
           </div>
 
@@ -739,30 +742,23 @@ export function AboutTestSoft() {
         className="w-full"
         style={{ backgroundColor: theme.colors.primary }}
       >
-        <div className="mx-4 sm:mx-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-4 sm:px-8 pt-8 pb-4">
+        <div className="mx-2 sm:mx-4 lg:mx-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 px-2 sm:px-4 lg:px-8 py-6 sm:py-8">
             <div className="lg:col-span-10 lg:col-start-2 flex flex-col items-center justify-center">
-              <h1
-                className="font-bold mb-4 text-2xl sm:text-3xl lg:text-4xl font-oswald text-center"
-                style={{ color: theme.colors.accent }}
-              >
-                ABOUT SECTION
-              </h1>
-              <p
-                className="text-center text-sm sm:text-base mb-6"
-                style={{ color: theme.colors.accent }}
-              >
-                Live Chat between founding partners (Discord Style)
-              </p>
+              <SectionHeader
+                mainHeading="More than code, coffee and chaos."
+                subLabel="About Us"
+                className="mb-6 sm:mb-8"
+              />
 
               {/* Main Content Container */}
-              <div className="mt-6 w-full flex justify-center relative">
+              <div className="mt-4 sm:mt-6 w-full flex justify-center relative">
                 <div className="w-full max-w-6xl relative">
                   {/* Background Container */}
-                  <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[650px]">
+                  <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[650px]">
                     {/* Main Container */}
                     <div
-                      className="absolute top-0 left-0 w-full h-full border-2 rounded-xl"
+                      className="absolute top-0 left-0 w-full h-full border-2 rounded-lg sm:rounded-xl"
                       style={{
                         backgroundColor: theme.colors.background,
                         borderColor: theme.colors.black,
