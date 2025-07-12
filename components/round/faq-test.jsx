@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
+import useSound from "@/hooks/use-sound";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 // --- Data for the FAQ section ---
@@ -353,6 +354,8 @@ const RoundedFAQSection = () => {
             mainHeading="Questions? We've got answers."
             subLabel="FAQ"
             className="mb-4"
+            pillPosition="section-boundary"
+            customPillStyle={{ top: "-40px" }}
           />
         </div>
 
@@ -464,22 +467,22 @@ export default function FAQTest() {
         }
       `}</style>
       <section
-        className="w-full py-8 sm:py-10 lg:py-12"
+        className="w-full py-20"
         style={{
-          backgroundColor: "#F7F4E9",
+          backgroundColor: "#231F20",
           backgroundImage:
-            "radial-gradient(circle at 20% 50%, rgba(255, 182, 0, 0.03) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(255, 182, 0, 0.02) 0%, transparent 60%)",
+            "radial-gradient(circle at 30% 40%, rgba(255, 182, 0, 0.03) 0%, transparent 60%), radial-gradient(circle at 70% 80%, rgba(255, 182, 0, 0.02) 0%, transparent 60%)",
         }}
       >
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-[70px]">
+        <div className="mx-auto" style={{ width: "1100px", maxWidth: "95vw" }}>
+          <div style={{ textAlign: "center", marginBottom: "70px" }}>
             <SectionHeader
-              mainHeading="Questions? We've got answers."
+              mainHeading="More questions? More answers."
               subLabel="FAQ"
               className="mb-4"
+              onDarkBackground={true}
             />
           </div>
-
           <div className="flex flex-col gap-2 sm:gap-3 lg:gap-4 max-w-3xl mx-auto">
             {faqData.map((faq, index) => (
               <div

@@ -346,7 +346,7 @@ Morning me will find this tomorrow and either cry or promote myself.`,
 
 export default function AboutTest() {
   return (
-    <section className="w-full bg-[#F7F4E9]">
+    <section className="w-full bg-[#FFB600]">
       <div className="mx-8 border border-gray-200 my-5">
         <div className="grid grid-cols-12 gap-6 px-8 pt-8 pb-4">
           <div className="col-span-10 col-start-2 flex flex-col items-center justify-center">

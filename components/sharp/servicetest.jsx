@@ -29,7 +29,7 @@ const ServiceCard = ({
         }`}
       >
         {/* Orange Header */}
-        <div className="h-[60px] border-b-2 border-black relative bg-[#DE6A48]">
+        <div className="h-[60px] border-b-2 border-black relative bg-[#DB5029]">
           {/* Plus/Minus Button */}
           <div className="absolute right-6 top-1/2 -translate-y-1/2">
             {/* Button Shadow */}
@@ -200,7 +200,7 @@ export default function ServiceTest() {
   ];
 
   return (
-    <section className="w-full py-12 bg-[#F5F1EB]">
+    <section className="w-full py-12 bg-[#DB5029]">
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-bold text-black mb-4 leading-tight font-['Oswald']">

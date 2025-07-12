@@ -21,26 +21,26 @@ const ServiceCard = ({
     <div className={`w-full max-w-6xl relative ${className}`}>
       {/* Main Card */}
       <div
-        className={`relative bg-white border-2 border-[#3f4c38] transition-all duration-700 ease-out w-full rounded-xl overflow-hidden ${
+        className={`relative bg-white border-2 border-[#231F20] transition-all duration-700 ease-out w-full rounded-xl overflow-hidden ${
           isExpanded ? "min-h-[520px] h-auto" : "h-[168px]"
         }`}
       >
         {/* Orange Header */}
-        <div className="h-[56px] border-b-2 border-[#3f4c38] relative bg-[#8abdb3]">
+        <div className="h-[56px] border-b-2 border-[#231F20] relative bg-[#DB5029]">
           {/* Plus/Minus Button */}
           <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2">
             {/* Main Button */}
             <button
               onClick={toggleExpanded}
-              className="relative w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full border-2 border-[#3f4c38] flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-200"
+              className="relative w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full border-2 border-[#231F20] flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-200"
             >
               {/* Plus/Minus Icon */}
               <div className="relative">
                 {/* Horizontal Line (always present) */}
-                <div className="w-3 h-0.5 bg-[#3f4c38] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
+                <div className="w-3 h-0.5 bg-[#231F20] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
                 {/* Vertical Line (only for plus) */}
                 {!isExpanded && (
-                  <div className="w-0.5 h-3 bg-[#3f4c38] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
+                  <div className="w-0.5 h-3 bg-[#231F20] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
                 )}
               </div>
             </button>
@@ -50,12 +50,12 @@ const ServiceCard = ({
         {/* Card Content */}
         <div className="px-4 sm:px-6 py-4 sm:py-5">
           {/* Title */}
-          <h3 className="text-xl sm:text-2xl font-bold text-[#3f4c38] mb-1 leading-tight font-oswald">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#231F20] mb-1 leading-tight font-oswald">
             {title}
           </h3>
 
           {/* Description */}
-          <p className="text-base sm:text-lg text-[#3f4c38] mb-4 font-space-grotesk leading-relaxed">
+          <p className="text-base sm:text-lg text-[#231F20] mb-4 font-space-grotesk leading-relaxed">
             {description}
           </p>
 
@@ -67,7 +67,7 @@ const ServiceCard = ({
           >
             {/* Separator Line */}
             <div
-              className={`w-full h-0.5 bg-[#3f4c38] mb-4 sm:mb-6 transition-opacity duration-500 ${
+              className={`w-full h-0.5 bg-[#231F20] mb-4 sm:mb-6 transition-opacity duration-500 ${
                 isExpanded ? "opacity-100 delay-200" : "opacity-0"
               }`}
             />
@@ -93,7 +93,7 @@ const ServiceCard = ({
                     return (
                       <div
                         key={index}
-                        className={`bg-transparent border-2 border-[#3f4c38] px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-bold text-[#3f4c38] rounded-full hover:scale-105 transition-all duration-200 font-space-grotesk ${
+                        className={`bg-transparent border-2 border-[#231F20] px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-bold text-[#231F20] rounded-full hover:scale-105 transition-all duration-200 font-space-grotesk ${
                           delayClasses[index] || "delay-[400ms]"
                         } ${
                           isExpanded
@@ -111,7 +111,7 @@ const ServiceCard = ({
               {/* Main Content - Bottom on mobile, Right on desktop */}
               <div className="w-full lg:w-4/5 flex flex-col">
                 <div
-                  className={`bg-white rounded-lg p-3 sm:p-4 border-2 border-[#3f4c38] transition-all duration-350 ease-out delay-[450ms] flex flex-col ${
+                  className={`bg-white rounded-lg p-3 sm:p-4 border-2 border-[#231F20] transition-all duration-350 ease-out delay-[450ms] flex flex-col ${
                     isExpanded
                       ? "translate-y-0 opacity-100"
                       : "translate-y-8 opacity-0"
@@ -137,12 +137,12 @@ const ServiceCard = ({
                     }`}
                   >
                     {/* Video Title */}
-                    <h4 className="text-[#3f4c38] text-base sm:text-lg font-bold mb-2 font-oswald">
+                    <h4 className="text-[#231F20] text-base sm:text-lg font-bold mb-2 font-oswald">
                       {title} - Behind the Scenes
                     </h4>
 
                     {/* Video Description */}
-                    <p className="text-[#3f4c38] text-xs sm:text-sm leading-relaxed font-space-grotesk mb-3">
+                    <p className="text-[#231F20] text-xs sm:text-sm leading-relaxed font-space-grotesk mb-3">
                       {expandedContent?.description}
                     </p>
                   </div>
@@ -203,13 +203,16 @@ export default function ServiceTest() {
   ];
 
   return (
-    <section className="w-full py-8 sm:py-12 bg-[#ffc943] relative">
+    <section className="w-full py-8 sm:py-12 bg-[#231F20] relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-12 sm:mb-16 text-center">
           <SectionHeader
             mainHeading="We build brands, not just stuff."
             subLabel="Services"
-            className="mb-6 sm:mb-8"
+            className="mb-4"
+            onDarkBackground={true}
+            pillPosition="section-boundary"
+            customPillStyle={{ top: "-30px" }}
           />
         </div>
 

@@ -79,9 +79,9 @@ function BrowserTabsTestSoft() {
       {/* Soft Chrome Browser Window Frame */}
       <div className="relative">
         {/* Main Chrome Window - Soft Edges */}
-        <div className="relative bg-[#f87a30] border-2 border-black overflow-hidden rounded-xl">
-          {/* Tab Bar - Updated to orange */}
-          <div className="bg-[#f87a30] border-b-2 border-black rounded-t-xl">
+        <div className="relative bg-[#FFB600] border-2 border-black overflow-hidden rounded-xl">
+          {/* Tab Bar - Updated to yellow */}
+          <div className="bg-[#FFB600] border-b-2 border-black rounded-t-xl">
             <div className="flex p-1 sm:p-2 overflow-x-auto scrollbar-hide">
               {tabsData.map((tab, index) => (
                 <button
@@ -135,8 +135,8 @@ function BrowserTabsTestSoft() {
             </div>
           </div>
 
-          {/* Address Bar Area - Updated to orange */}
-          <div className="bg-[#f87a30] border-b-2 border-black p-2 sm:p-3">
+          {/* Address Bar Area - Updated to yellow */}
+          <div className="bg-[#FFB600] border-b-2 border-black p-2 sm:p-3">
             <div className="flex items-center gap-2 sm:gap-3">
               {/* Navigation Buttons - Updated to match site design */}
               <div className="hidden sm:flex gap-2">
@@ -225,8 +225,8 @@ function BrowserTabsTestSoft() {
                   <button
                     className="px-6 py-3 font-bold text-black border-2 text-xl hover:scale-105 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer"
                     style={{
-                      backgroundColor: "#f0752f",
-                      borderColor: "#5a5248",
+                      backgroundColor: "#FFB600",
+                      borderColor: "#000000",
                       fontFamily: "var(--font-oswald)",
                     }}
                     onClick={() => console.log("Start Project clicked")}
@@ -273,7 +273,7 @@ function BrowserTabsTestSoft() {
 
                 {/* Project Type Badge */}
                 <div className="flex justify-center">
-                  <span className="inline-block bg-[#f87a30] text-black font-space-grotesk text-sm px-4 py-2 rounded-full border-2 border-black">
+                  <span className="inline-block bg-[#FFB600] text-black font-space-grotesk text-sm px-4 py-2 rounded-full border-2 border-black">
                     {currentTab?.title} • {currentTab?.subtitle}
                   </span>
                 </div>
@@ -290,7 +290,7 @@ export default function TestimonialsTest() {
   return (
     <div
       className="min-h-screen relative"
-      style={{ backgroundColor: "#F7F4E9" }}
+      style={{ backgroundColor: "#FAF9F5" }}
     >
       {/* Joystick for Game 2 */}
       <div className="absolute top-6 right-6 z-20">
@@ -310,6 +310,9 @@ export default function TestimonialsTest() {
                   mainHeading="Clients talk and we hear."
                   subLabel="Testimonials"
                   className="mb-4"
+                  onDarkBackground={false}
+                  pillPosition="section-boundary"
+                  customPillStyle={{ top: "-40px" }}
                 />
               </div>
               <BrowserTabsTestSoft />

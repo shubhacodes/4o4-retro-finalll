@@ -282,11 +282,11 @@ export default function ProcessTest() {
   const currentTabData = tabData.find((tab) => tab.id === activeCard);
 
   return (
-    <section className="w-full bg-[#F7F4E9]">
+    <section className="w-full bg-[#231F20]">
       <div className="mx-auto max-w-[1150px] px-8 py-8">
         <div className="flex flex-col items-center justify-center">
           {/* Header */}
-          <h1 className="font-bold mb-12 text-center text-7xl font-oswald text-black leading-tight">
+          <h1 className="font-bold mb-12 text-center text-7xl font-oswald text-white leading-tight">
             Our not-so <br /> secret sauce
             <span className="block text-2xl font-normal mt-2 opacity-60">
               (Sharp Version)
@@ -299,16 +299,16 @@ export default function ProcessTest() {
             <div className="absolute bg-black w-full h-[500px] transform translate-x-[12px] translate-y-[12px]" />
 
             {/* Main content area */}
-            <div className="relative bg-white border-[3px] border-black w-full h-[500px] p-10">
+            <div className="relative bg-white border-[3px] border-[#231F20] w-full h-[500px] p-10">
               <div className="h-full flex flex-col justify-center">
                 {/* Content Area - Full Height */}
                 <div className="flex flex-1 relative items-center">
                   {/* Left: Dynamic Text Content */}
                   <div className="w-1/2 pr-8">
-                    <h3 className="font-bold mb-4 text-4xl font-oswald text-black">
+                    <h3 className="font-bold mb-4 text-4xl font-oswald text-[#231F20]">
                       {currentTabData.title}
                     </h3>
-                    <p className="text-[22px] leading-relaxed text-black">
+                    <p className="text-[22px] leading-relaxed text-[#231F20]">
                       {currentTabData.content}
                     </p>
                   </div>
@@ -335,10 +335,10 @@ export default function ProcessTest() {
                           <div className="absolute inset-0 bg-black translate-x-1 translate-y-1" />
                           {/* Main card */}
                           <div
-                            className="relative w-full h-full flex items-center justify-center border-2 border-black"
-                            style={{ backgroundColor: "#DE6A48" }}
+                            className="relative w-full h-full flex items-center justify-center border-2 border-[#231F20]"
+                            style={{ backgroundColor: "#DB5029" }}
                           >
-                            <span className="text-8xl font-bold font-oswald text-black drop-shadow-lg">
+                            <span className="text-8xl font-bold font-oswald text-white drop-shadow-lg">
                               1
                             </span>
                           </div>
@@ -350,10 +350,10 @@ export default function ProcessTest() {
                           <div className="absolute inset-0 bg-black translate-x-1 translate-y-1" />
                           {/* Main card */}
                           <div
-                            className="relative w-full h-full flex items-center justify-center border-2 border-black"
-                            style={{ backgroundColor: "#DE6A48" }}
+                            className="relative w-full h-full flex items-center justify-center border-2 border-[#231F20]"
+                            style={{ backgroundColor: "#DB5029" }}
                           >
-                            <span className="text-8xl font-bold font-oswald text-black drop-shadow-lg">
+                            <span className="text-8xl font-bold font-oswald text-white drop-shadow-lg">
                               2
                             </span>
                           </div>
@@ -365,10 +365,10 @@ export default function ProcessTest() {
                           <div className="absolute inset-0 bg-black translate-x-1 translate-y-1" />
                           {/* Main card */}
                           <div
-                            className="relative w-full h-full flex items-center justify-center border-2 border-black"
-                            style={{ backgroundColor: "#DE6A48" }}
+                            className="relative w-full h-full flex items-center justify-center border-2 border-[#231F20]"
+                            style={{ backgroundColor: "#DB5029" }}
                           >
-                            <span className="text-8xl font-bold font-oswald text-black drop-shadow-lg">
+                            <span className="text-8xl font-bold font-oswald text-white drop-shadow-lg">
                               3
                             </span>
                           </div>

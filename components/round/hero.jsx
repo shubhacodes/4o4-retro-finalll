@@ -2,52 +2,51 @@
 
 export default function Hero() {
   return (
-    <section className="w-full" style={{ backgroundColor: "#F7F4E9" }}>
-      <div className="mx-8">
-        <div className="min-h-screen flex items-center justify-center py-12">
+    <section className="w-full" style={{ backgroundColor: "#231F20" }}>
+      <div className="mx-4 sm:mx-6 lg:mx-8">
+        <div className="min-h-screen flex items-center justify-center py-6 sm:py-8 lg:py-12">
           {/* Browser Window Container */}
           <div className="relative w-full max-w-6xl">
             {/* Browser Window Frame */}
-            <div className="bg-white rounded-t-lg border-2 border-black">
+            <div className="bg-[#FAF9F5] rounded-t-lg border-2 border-black">
               {/* Browser Header */}
               <div
-                className="flex items-center justify-between px-4 py-3 rounded-t-lg border-b-2 border-black"
-                style={{ backgroundColor: "#90b6aa" }}
+                className="flex items-center justify-between px-2 sm:px-4 py-2 sm:py-3 rounded-t-lg border-b-2 border-black"
+                style={{ backgroundColor: "#231F20" }}
               >
                 {/* Browser Buttons */}
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full border border-black"></div>
+                <div className="flex space-x-1 sm:space-x-2">
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-500 rounded-full border border-black"></div>
                   <div
-                    className="w-3 h-3 rounded-full border border-black"
-                    style={{ backgroundColor: "#f3c141" }}
+                    className="w-2 h-2 sm:w-3 sm:h-3 rounded-full border border-black"
+                    style={{ backgroundColor: "#FFB600" }}
                   ></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full border border-black"></div>
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full border border-black"></div>
                 </div>
                 {/* Browser Title */}
                 <div
-                  className="px-3 py-1 rounded text-white font-bold text-sm border border-black"
-                  style={{ backgroundColor: "#f0752f" }}
+                  className="px-2 sm:px-3 py-1 rounded text-[#FAF9F5] font-bold text-xs sm:text-sm border border-black hidden sm:block"
+                  style={{ backgroundColor: "#DB5029" }}
                 >
                   DESTINY DRESSES LIKE AN ERROR, SOMETIMES.
                 </div>
-                <div className="w-16"></div> {/* Spacer */}
+                <div className="w-8 sm:w-16"></div> {/* Spacer */}
               </div>
 
               {/* Browser Content */}
               <div
-                className="p-16 text-center"
-                style={{ backgroundColor: "#90b6aa" }}
+                className="p-4 sm:p-8 lg:p-16 text-center"
+                style={{ backgroundColor: "#231F20" }}
               >
                 {/* Main Brand Text */}
-                <div className="mb-8">
-                  <div className="mb-4">
+                <div className="mb-6 sm:mb-8">
+                  <div className="mb-2 sm:mb-4">
                     {/* Main text */}
                     <h1
-                      className="font-bold leading-none"
+                      className="font-bold leading-none text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
                       style={{
-                        fontSize: "120px",
-                        color: "#f3c141",
-                        WebkitTextStroke: "2px #5a5248",
+                        color: "#FFB600",
+                        WebkitTextStroke: "0.5px #5a5248",
                         fontFamily: "var(--font-oswald)",
                       }}
                     >
@@ -58,11 +57,10 @@ export default function Hero() {
                   <div>
                     {/* Main text */}
                     <h1
-                      className="font-bold leading-none"
+                      className="font-bold leading-none text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
                       style={{
-                        fontSize: "120px",
-                        color: "#f0752f",
-                        WebkitTextStroke: "2px #5a5248",
+                        color: "#DB5029",
+                        WebkitTextStroke: "0.5px #5a5248",
                         fontFamily: "var(--font-oswald)",
                       }}
                     >
@@ -72,11 +70,11 @@ export default function Hero() {
                 </div>
 
                 {/* Description */}
-                <div className="mb-12 max-w-2xl mx-auto">
+                <div className="mb-8 sm:mb-12 max-w-2xl mx-auto px-2 sm:px-0">
                   <p
-                    className="text-2xl leading-relaxed font-medium"
+                    className="text-base sm:text-lg lg:text-xl xl:text-2xl leading-relaxed font-medium"
                     style={{
-                      color: "#fbf8f3",
+                      color: "#FAF9F5",
                       fontFamily: "var(--font-space-grotesk)",
                     }}
                   >
@@ -87,9 +85,9 @@ export default function Hero() {
 
                 {/* CTA Button */}
                 <button
-                  className="px-6 py-3 font-bold text-black border-2 text-xl hover:scale-105 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer"
+                  className="px-4 sm:px-6 py-2 sm:py-3 font-bold text-black border-2 text-base sm:text-lg lg:text-xl hover:scale-105 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer"
                   style={{
-                    backgroundColor: "#f0752f",
+                    backgroundColor: "#DB5029",
                     borderColor: "#5a5248",
                     fontFamily: "var(--font-oswald)",
                   }}
@@ -111,17 +109,21 @@ export default function Hero() {
 
             {/* Decorative Elements */}
             <div
-              className="absolute -top-4 -left-4 w-12 h-12 rounded-full border-2 border-black flex items-center justify-center"
-              style={{ backgroundColor: "#f3c141" }}
+              className="absolute -top-2 sm:-top-4 -left-2 sm:-left-4 w-8 h-8 sm:w-12 sm:h-12 rounded-full border-2 border-black flex items-center justify-center"
+              style={{ backgroundColor: "#FFB600" }}
             >
-              <span className="text-white font-bold text-xl">🎨</span>
+              <span className="text-white font-bold text-sm sm:text-xl">
+                ⚡
+              </span>
             </div>
 
             <div
-              className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full border-2 border-black flex items-center justify-center"
-              style={{ backgroundColor: "#90b6aa" }}
+              className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4 w-10 h-10 sm:w-16 sm:h-16 rounded-full border-2 border-black flex items-center justify-center"
+              style={{ backgroundColor: "#231F20" }}
             >
-              <span className="text-white font-bold text-2xl">↗</span>
+              <span className="text-white font-bold text-lg sm:text-2xl">
+                ↗
+              </span>
             </div>
           </div>
         </div>

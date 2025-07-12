@@ -29,7 +29,7 @@ const ServiceCard = ({
         }`}
       >
         {/* Orange Header */}
-        <div className="h-[60px] border-b-2 border-black relative bg-[#DE6A48]">
+        <div className="h-[60px] border-b-2 border-black relative bg-[#DB5029]">
           {/* Plus/Minus Button */}
           <div className="absolute right-6 top-1/2 -translate-y-1/2">
             {/* Button Shadow */}
@@ -187,7 +187,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="w-full" style={{ backgroundColor: "#F7F4E9" }}>
+    <section className="w-full" style={{ backgroundColor: "#DB5029" }}>
       <div
         className="mx-8 border border-gray-200"
         style={{ marginTop: "20px", marginBottom: "20px" }}

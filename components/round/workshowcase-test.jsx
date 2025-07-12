@@ -40,7 +40,7 @@ export const Frame3416 = ({
     >
       {/* Main container - responsive scaling */}
       <div className="relative w-full h-full">
-        {/* Orange header rectangle with black border - with rounded corners */}
+        {/* Yellow header rectangle with black border - with rounded corners */}
         <div
           className="absolute border-t border-l border-r border-black rounded-t-lg"
           style={{
@@ -48,7 +48,7 @@ export const Frame3416 = ({
             height: "clamp(45px, 14%, 55px)", // Increased header height for larger cards
             left: "0px",
             top: "0px",
-            backgroundColor: "#f87a30",
+            backgroundColor: "#FFB600",
           }}
         />
 
@@ -65,7 +65,7 @@ export const Frame3416 = ({
 
         {/* White content area – fills remaining space */}
         <div
-          className="absolute bg-white rounded-b-lg border-l border-r border-b border-black"
+          className="absolute bg-[#FAF9F5] rounded-b-lg border-l border-r border-b border-black"
           style={{
             left: "0px",
             top: "clamp(47px, 14.2%, 57px)", // Just below header separator
@@ -76,7 +76,7 @@ export const Frame3416 = ({
 
         {/* Header content - company name */}
         <div
-          className="absolute text-black overflow-hidden px-3 sm:px-4 py-2 sm:py-3 flex items-center"
+          className="absolute text-[#231F20] overflow-hidden px-3 sm:px-4 py-2 sm:py-3 flex items-center"
           style={{
             left: "0px",
             top: "0px",
@@ -239,7 +239,7 @@ const ExpandedDialog = ({ project, onClose }) => {
     <div className="fixed inset-0 backdrop-blur-md bg-white/10 flex items-center justify-center z-50 p-2 sm:p-4">
       <div className="bg-white/95 backdrop-blur-lg border border-black rounded-lg w-full max-w-6xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden">
         {/* Header - responsive */}
-        <div className="bg-[#f87a30] border-b border-black p-3 sm:p-4 flex justify-between items-center">
+        <div className="bg-[#FFB600] border-b border-black p-3 sm:p-4 flex justify-between items-center">
           <h2 className="text-base sm:text-lg font-bold text-black font-oswald truncate">
             {project.title}
           </h2>
@@ -264,7 +264,7 @@ const ExpandedDialog = ({ project, onClose }) => {
                 {/* Browser Window */}
                 <div className="relative w-full h-full bg-white border border-black rounded-lg overflow-hidden">
                   {/* Browser Header - responsive */}
-                  <div className="bg-[#f87a30] border-b border-black p-2 sm:p-3 flex items-center justify-between">
+                  <div className="bg-[#FFB600] border-b border-black p-2 sm:p-3 flex items-center justify-between">
                     <div className="flex-1 mx-2 sm:mx-4">
                       <button
                         onClick={handleLinkClick}
@@ -338,12 +338,12 @@ const ExpandedDialog = ({ project, onClose }) => {
               {/* Main Typography & Colours Card */}
               <div className="bg-white border border-black rounded-lg overflow-hidden h-full flex flex-col">
                 {/* Header */}
-                <div className="bg-[#f87a30] border-b border-black p-2 sm:p-3 flex items-center relative">
-                  <h4 className="text-base sm:text-lg  font-oswald text-black">
+                <div className="bg-[#FFB600] border-b border-black p-2 sm:p-3 flex items-center relative">
+                  <h4 className="text-base sm:text-lg font-oswald text-[#231F20]">
                     Typography & Colours
                   </h4>
-                  {/* Orange accent border on left - darker orange for contrast */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#e6691f]"></div>
+                  {/* Yellow accent border on left - darker yellow for contrast */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#DB5029]"></div>
                 </div>
 
                 {/* Content Grid */}
@@ -398,53 +398,43 @@ const ExpandedDialog = ({ project, onClose }) => {
                   <div className="space-y-2">
                     {/* Color Swatches */}
                     <div className="space-y-1.5">
-                      {/* Primary Yellow Green */}
+                      {/* Primary Yellow */}
                       <div className="flex items-center space-x-3">
                         <div className="w-16 h-8 bg-[#FFB600] border border-black rounded"></div>
-                        <div className="text-xs text-gray-600 font-space-grotesk">
+                        <div className="text-xs text-[#231F20] font-space-grotesk">
                           #FFB600
                           <br />
-                          <span className="text-gray-500">Primary</span>
+                          <span className="text-[#231F20]/70">Primary</span>
                         </div>
                       </div>
 
-                      {/* Secondary Green */}
+                      {/* Terra Cotta */}
                       <div className="flex items-center space-x-3">
-                        <div className="w-16 h-8 bg-[#00796B] border border-black rounded"></div>
-                        <div className="text-xs text-gray-600 font-space-grotesk">
-                          #00796B
+                        <div className="w-16 h-8 bg-[#DB5029] border border-black rounded"></div>
+                        <div className="text-xs text-[#231F20] font-space-grotesk">
+                          #DB5029
                           <br />
-                          <span className="text-gray-500">Secondary</span>
+                          <span className="text-[#231F20]/70">Secondary</span>
                         </div>
                       </div>
 
-                      {/* Black */}
+                      {/* Charcoal Black */}
                       <div className="flex items-center space-x-3">
-                        <div className="w-16 h-8 bg-black border border-black rounded"></div>
-                        <div className="text-xs text-gray-600 font-space-grotesk">
-                          #000000
+                        <div className="w-16 h-8 bg-[#231F20] border border-black rounded"></div>
+                        <div className="text-xs text-[#231F20] font-space-grotesk">
+                          #231F20
                           <br />
-                          <span className="text-gray-500">Text</span>
+                          <span className="text-[#231F20]/70">Text</span>
                         </div>
                       </div>
 
                       {/* Light Background */}
                       <div className="flex items-center space-x-3">
-                        <div className="w-16 h-8 bg-[#F7F4E9] border border-black rounded"></div>
-                        <div className="text-xs text-gray-600 font-space-grotesk">
-                          #F7F4E9
+                        <div className="w-16 h-8 bg-[#FAF9F5] border border-black rounded"></div>
+                        <div className="text-xs text-[#231F20] font-space-grotesk">
+                          #FAF9F5
                           <br />
-                          <span className="text-gray-500">Background</span>
-                        </div>
-                      </div>
-
-                      {/* White */}
-                      <div className="flex items-center space-x-3">
-                        <div className="w-16 h-8 bg-white border border-black rounded"></div>
-                        <div className="text-xs text-gray-600 font-space-grotesk">
-                          #FFFFFF
-                          <br />
-                          <span className="text-gray-500">Surface</span>
+                          <span className="text-[#231F20]/70">Background</span>
                         </div>
                       </div>
                     </div>
@@ -602,7 +592,7 @@ export default function WorkShowcaseTest() {
   return (
     <section
       className="w-full flex flex-col relative"
-      style={{ backgroundColor: "#F7F4E9" }}
+      style={{ backgroundColor: "#FAF9F5" }}
     >
       {/* Top Right Button Group */}
       <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30 flex items-center gap-1 sm:gap-2">
@@ -636,6 +626,9 @@ export default function WorkShowcaseTest() {
             mainHeading="See what we've been cooking."
             subLabel="Work Showcase"
             className="mb-8 sm:mb-10 lg:mb-12"
+            onDarkBackground={false}
+            pillPosition="section-boundary"
+            customPillStyle={{ top: "-40px" }}
           />
 
           {/* Carousel Layout - responsive */}

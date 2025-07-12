@@ -104,18 +104,18 @@ const createRetroSounds = () => {
 // Simple retro theme configuration
 const theme = {
   colors: {
-    primary: "#8abdb3",
-    secondary: "#ffc943", // Yellow
-    accent: "#3f4c38", // Main text color
-    background: "#F7F4E9", // Beige for text areas
-    white: "#ffffff",
-    black: "#000000",
+    primary: "#FFB600",
+    secondary: "#FFB600", // Yellow for header
+    accent: "#231F20", // Main text color
+    background: "#FAF9F5", // Off-white for text areas
+    white: "#FAF9F5",
+    black: "#231F20",
     // Simplified retro colors
-    chatBg: "#F7F4E9", // Beige background
-    messageBoxBg: "#F7F4E9", // Beige for message areas
-    textPrimary: "#3f4c38", // Main text color
-    textSecondary: "#ffc943", // Yellow for highlights
-    border: "#3f4c38", // Use main text color for borders
+    chatBg: "#FAF9F5", // Off-white background
+    messageBoxBg: "#FAF9F5", // Off-white for message areas
+    textPrimary: "#231F20", // Main text color
+    textSecondary: "#FFB600", // Yellow for highlights
+    border: "#231F20", // Use main text color for borders
   },
   breakpoints: {
     mobile: 768,
@@ -738,10 +738,7 @@ export function AboutTestSoft() {
         }
       `}</style>
 
-      <section
-        className="w-full"
-        style={{ backgroundColor: theme.colors.primary }}
-      >
+      <section className="w-full" style={{ backgroundColor: "#FAF9F5" }}>
         <div className="mx-2 sm:mx-4 lg:mx-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 px-2 sm:px-4 lg:px-8 py-6 sm:py-8">
             <div className="lg:col-span-10 lg:col-start-2 flex flex-col items-center justify-center">
@@ -749,6 +746,9 @@ export function AboutTestSoft() {
                 mainHeading="More than code, coffee and chaos."
                 subLabel="About Us"
                 className="mb-6 sm:mb-8"
+                onDarkBackground={false}
+                pillPosition="section-boundary"
+                customPillStyle={{ top: "-30px" }}
               />
 
               {/* Main Content Container */}
