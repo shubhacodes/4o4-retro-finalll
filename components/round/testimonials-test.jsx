@@ -88,7 +88,7 @@ function BrowserTabsTestSoft() {
                   key={tab.value}
                   onClick={() => handleTabClick(tab.value)}
                   className={`
-                    px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-oswald transition-all duration-500 ease-out relative group rounded-t-lg mx-0.5 sm:mx-1 whitespace-nowrap flex-shrink-0
+                    px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-oswald transition-all duration-500 ease-out relative group rounded-t-lg mx-0.5 sm:mx-1 whitespace-nowrap flex-shrink-0 min-w-[80px] sm:min-w-[100px]
                     ${
                       activeTab === tab.value && !isNewTab
                         ? "bg-white text-black border-b-0 transform -translate-y-1 shadow-sm"
@@ -96,7 +96,7 @@ function BrowserTabsTestSoft() {
                     }
                   `}
                 >
-                  <div className="flex items-center gap-1 sm:gap-2">
+                  <div className="flex items-center gap-1 sm:gap-2 justify-center">
                     {/* favicon */}
                     <div
                       className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 ease-out
@@ -106,7 +106,7 @@ function BrowserTabsTestSoft() {
                           : "bg-gray-500 group-hover:bg-gray-600"
                       }`}
                     ></div>
-                    <span className="text-xs whitespace-nowrap hidden sm:inline">
+                    <span className="text-xs whitespace-nowrap">
                       {tab.label}
                     </span>
                     {activeTab === tab.value && !isNewTab && (
@@ -300,19 +300,18 @@ export default function TestimonialsTest() {
         />
       </div>
       {/* Main Content */}
-      <section className="w-full py-8 sm:py-12">
+      <section className="w-full py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col items-center justify-center gap-12 sm:gap-16">
+          <div className="flex flex-col items-center justify-center gap-16 sm:gap-20">
             {/* Soft Version */}
             <div className="w-full">
-              <div className="mb-8 sm:mb-12 text-center">
+              <div className="mb-12 sm:mb-16 text-center">
                 <SectionHeader
                   mainHeading="Clients talk and we hear."
                   subLabel="Testimonials"
                   className="mb-4"
                   onDarkBackground={false}
                   pillPosition="section-boundary"
-                  customPillStyle={{ top: "-40px" }}
                 />
               </div>
               <BrowserTabsTestSoft />

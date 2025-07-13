@@ -1,8 +1,11 @@
 "use client";
 
 import { StandardCTAButton } from "./cta-test";
+import { useRouter } from "next/navigation";
 
 export default function HeroTest() {
+  const router = useRouter();
+
   return (
     <section className="w-full" style={{ backgroundColor: "#DE6A48" }}>
       <div className="mx-4 sm:mx-6 lg:mx-8">
@@ -75,16 +78,7 @@ export default function HeroTest() {
               <StandardCTAButton
                 size="large"
                 rounded={false}
-                onClick={() => {
-                  // Scroll to contact section or handle CTA action
-                  const contactSection = document.querySelector("#contact");
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    // Fallback - could navigate to contact page or show contact form
-                    console.log("CTA clicked - Start the detour!");
-                  }
-                }}
+                onClick={() => router.push("/contact")}
               >
                 START THE DETOUR
               </StandardCTAButton>

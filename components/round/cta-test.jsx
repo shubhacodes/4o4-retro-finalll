@@ -2,6 +2,7 @@
 import React from "react";
 import JoystickButton from "@/components/ui/JoystickButton";
 import useSound from "@/hooks/use-sound";
+import { useRouter } from "next/navigation";
 // ProcessFrame not used in round version - using custom rounded frame
 
 // --- CTA Video Component ---
@@ -257,193 +258,192 @@ const CTAButton = ({ rounded = false, children, onClick }) => (
 );
 
 // --- Sharp CTA Section (updated colors) ---
-const SharpCTASection = () => (
-  <section
-    className="w-full py-8 sm:py-10 lg:py-12"
-    style={{ backgroundColor: "#231F20" }}
-  >
-    <div className="mx-auto max-w-6xl px-6">
-      {/* Outer boundary container */}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          border: "3px solid black",
-          borderRadius: "25px",
-          backgroundColor: "white",
-          overflow: "hidden",
-        }}
-      >
-        {/* Grid strip at top */}
-        <div
-          style={{
-            height: "40px",
-            width: "100%",
-            backgroundImage: `
-              linear-gradient(#231F20 1px, transparent 1px),
-              linear-gradient(90deg, #231F20 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-            backgroundColor: "#FAF9F5",
-            borderBottom: "2px solid black",
-          }}
-        />
+const SharpCTASection = () => {
+  const router = useRouter();
 
-        {/* Main content area */}
+  return (
+    <section
+      className="w-full py-8 sm:py-10 lg:py-12"
+      style={{ backgroundColor: "#231F20" }}
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        {/* Outer boundary container */}
         <div
           style={{
             position: "relative",
             width: "100%",
-            minHeight: "350px",
-            backgroundColor: "#FAF9F5",
-            padding: "24px",
+            border: "3px solid black",
+            borderRadius: "25px",
+            backgroundColor: "white",
+            overflow: "hidden",
           }}
-          className="sm:min-h-[400px] sm:p-10"
         >
-          <div className="flex flex-col lg:flex-row items-center h-full gap-6 lg:gap-0">
-            {/* Left Side: Video */}
-            <div className="w-full lg:w-1/2 lg:pr-8">
-              <CTAVideo rounded={true} />
-            </div>
+          {/* Grid strip at top */}
+          <div
+            style={{
+              height: "40px",
+              width: "100%",
+              backgroundImage: `
+                linear-gradient(#231F20 1px, transparent 1px),
+                linear-gradient(90deg, #231F20 1px, transparent 1px)
+              `,
+              backgroundSize: "60px 60px",
+              backgroundColor: "#FAF9F5",
+              borderBottom: "2px solid black",
+            }}
+          />
 
-            {/* Right Side: Content */}
-            <div className="w-full lg:w-1/2 lg:pl-8 flex flex-col justify-center text-center lg:text-left">
-              <h2
-                className="font-bold mb-4 sm:mb-6 text-xl sm:text-2xl font-oswald"
-                style={{
-                  lineHeight: "1.2",
-                  color: "#231F20",
-                  letterSpacing: "1px",
-                }}
-              >
-                Ready to start something{" "}
-                <span style={{ color: "#DB5029" }}>special?</span>
-              </h2>
-              <p
-                className="mb-6 sm:mb-8 text-base sm:text-lg font-space-grotesk"
-                style={{
-                  lineHeight: "1.7",
-                  color: "#231F20",
-                }}
-              >
-                We're here to turn your ideas into unforgettable brand
-                experiences. Let's chat about what we can build together.
-              </p>
-              <div className="flex justify-center lg:justify-start">
-                <StandardCTAButton
-                  size="medium"
-                  rounded={true}
-                  onClick={() => console.log("Let's Talk clicked - Sharp CTA!")}
-                >
-                  LET'S TALK
-                </StandardCTAButton>
+          {/* Main content area */}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              minHeight: "350px",
+              backgroundColor: "#FAF9F5",
+              padding: "24px",
+            }}
+            className="sm:min-h-[400px] sm:p-10"
+          >
+            <div className="flex flex-col lg:flex-row items-center h-full gap-6 lg:gap-0">
+              {/* Left Side: Video */}
+              <div className="w-full lg:w-1/2 lg:pr-8">
+                <CTAVideo rounded={true} />
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
 
-// --- Rounded CTA Section (Retro Computer Screen Design) ---
-const RoundedCTASection = () => (
-  <section
-    className="w-full pt-6 pb-2 sm:pt-8 sm:pb-3 lg:pt-10 lg:pb-4"
-    style={{ backgroundColor: "#231F20" }}
-  >
-    <div className="mx-auto max-w-6xl px-6">
-      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-        {/* Left Side - Computer Monitor */}
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <div className="relative inline-block">
-            {/* Monitor Frame */}
-            <div
-              className="relative bg-[#FAF9F5] p-6 border-4 border-black"
-              style={{
-                borderRadius: "12px",
-                boxShadow:
-                  "inset -3px -3px 6px rgba(0,0,0,0.4), inset 3px 3px 6px rgba(255,255,255,0.8)",
-              }}
-            >
-              {/* Screen Display */}
-              <div
-                className="bg-[#231F20] border-2 border-black p-2"
-                style={{
-                  borderRadius: "4px",
-                  boxShadow:
-                    "inset -2px -2px 4px rgba(0,0,0,0.8), inset 2px 2px 4px rgba(255,255,255,0.1)",
-                }}
-              >
-                {/* Video Display - Enlarged */}
-                <div
-                  style={{ height: "400px", overflow: "hidden" }}
-                  className="sm:h-[450px] lg:h-[500px]"
+              {/* Right Side: Content */}
+              <div className="w-full lg:w-1/2 lg:pl-8 flex flex-col justify-center text-center lg:text-left">
+                <h2
+                  className="font-bold mb-4 sm:mb-6 text-xl sm:text-2xl font-oswald"
+                  style={{
+                    lineHeight: "1.2",
+                    color: "#231F20",
+                    letterSpacing: "1px",
+                  }}
                 >
-                  <CTAVideo rounded={false} />
+                  Ready to start something{" "}
+                  <span style={{ color: "#DB5029" }}>special?</span>
+                </h2>
+                <p
+                  className="mb-6 sm:mb-8 text-base sm:text-lg font-space-grotesk"
+                  style={{
+                    lineHeight: "1.7",
+                    color: "#231F20",
+                  }}
+                >
+                  We're here to turn your ideas into unforgettable brand
+                  experiences. Let's chat about what we can build together.
+                </p>
+                <div className="flex justify-center lg:justify-start">
+                  <StandardCTAButton
+                    size="medium"
+                    rounded={true}
+                    onClick={() => router.push("/contact")}
+                  >
+                    LET'S TALK
+                  </StandardCTAButton>
                 </div>
               </div>
             </div>
-
-            {/* Monitor Base */}
-            <div
-              className="mx-auto mt-2 w-24 h-6 bg-[#FAF9F5] border-2 border-black"
-              style={{
-                borderRadius: "0 0 8px 8px",
-                boxShadow:
-                  "inset -2px -2px 4px rgba(0,0,0,0.3), inset 2px 2px 4px rgba(255,255,255,0.8)",
-              }}
-            ></div>
-            <div
-              className="mx-auto mt-1 w-32 h-3 bg-[#FAF9F5] border-2 border-black"
-              style={{
-                borderRadius: "4px",
-                boxShadow:
-                  "inset -1px -1px 2px rgba(0,0,0,0.3), inset 1px 1px 2px rgba(255,255,255,0.8)",
-              }}
-            ></div>
-          </div>
-        </div>
-
-        {/* Right Side - Content */}
-        <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h2 className="font-bold mb-4 text-xl sm:text-2xl font-oswald text-[#FAF9F5]">
-            System ready for creative{" "}
-            <span className="text-[#DB5029]">initialization.</span>
-          </h2>
-          <p
-            className="text-sm sm:text-base font-space-grotesk text-[#FAF9F5] opacity-80 mb-8"
-            style={{ lineHeight: "1.6" }}
-          >
-            Your project parameters are being configured. We're prepared to
-            begin the creative process and establish your brand's digital
-            presence.
-          </p>
-
-          {/* Hero-style CTA Button */}
-          <div className="flex justify-center lg:justify-start">
-            <StandardCTAButton
-              size="large"
-              rounded={true}
-              onClick={() => {
-                // Scroll to contact section or handle CTA action
-                const contactSection = document.querySelector("#contact");
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: "smooth" });
-                } else {
-                  // Fallback - could navigate to contact page or show contact form
-                  console.log("CTA clicked - Start the detour!");
-                }
-              }}
-            >
-              START THE DETOUR
-            </StandardCTAButton>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+
+// --- Rounded CTA Section (Retro Computer Screen Design) ---
+const RoundedCTASection = () => {
+  const router = useRouter();
+
+  return (
+    <section
+      className="w-full pt-6 pb-2 sm:pt-8 sm:pb-3 lg:pt-10 lg:pb-4"
+      style={{ backgroundColor: "#231F20" }}
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* Left Side - Computer Monitor */}
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <div className="relative inline-block">
+              {/* Monitor Frame */}
+              <div
+                className="relative bg-[#FAF9F5] p-6 border-4 border-black"
+                style={{
+                  borderRadius: "12px",
+                  boxShadow:
+                    "inset -3px -3px 6px rgba(0,0,0,0.4), inset 3px 3px 6px rgba(255,255,255,0.8)",
+                }}
+              >
+                {/* Screen Display */}
+                <div
+                  className="bg-[#231F20] border-2 border-black p-2"
+                  style={{
+                    borderRadius: "4px",
+                    boxShadow:
+                      "inset -2px -2px 4px rgba(0,0,0,0.8), inset 2px 2px 4px rgba(255,255,255,0.1)",
+                  }}
+                >
+                  {/* Video Display - Enlarged */}
+                  <div
+                    style={{ height: "400px", overflow: "hidden" }}
+                    className="sm:h-[450px] lg:h-[500px]"
+                  >
+                    <CTAVideo rounded={false} />
+                  </div>
+                </div>
+              </div>
+
+              {/* Monitor Base */}
+              <div
+                className="mx-auto mt-2 w-24 h-6 bg-[#FAF9F5] border-2 border-black"
+                style={{
+                  borderRadius: "0 0 8px 8px",
+                  boxShadow:
+                    "inset -2px -2px 4px rgba(0,0,0,0.3), inset 2px 2px 4px rgba(255,255,255,0.8)",
+                }}
+              ></div>
+              <div
+                className="mx-auto mt-1 w-32 h-3 bg-[#FAF9F5] border-2 border-black"
+                style={{
+                  borderRadius: "4px",
+                  boxShadow:
+                    "inset -1px -1px 2px rgba(0,0,0,0.3), inset 1px 1px 2px rgba(255,255,255,0.8)",
+                }}
+              ></div>
+            </div>
+          </div>
+
+          {/* Right Side - Content */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <h2 className="font-bold mb-4 text-xl sm:text-2xl font-oswald text-[#FAF9F5]">
+              System ready for creative{" "}
+              <span className="text-[#DB5029]">initialization.</span>
+            </h2>
+            <p
+              className="text-sm sm:text-base font-space-grotesk text-[#FAF9F5] opacity-80 mb-8"
+              style={{ lineHeight: "1.6" }}
+            >
+              Your project parameters are being configured. We're prepared to
+              begin the creative process and establish your brand's digital
+              presence.
+            </p>
+
+            {/* Hero-style CTA Button */}
+            <div className="flex justify-center lg:justify-start">
+              <StandardCTAButton
+                size="large"
+                rounded={true}
+                onClick={() => router.push("/contact")}
+              >
+                START THE DETOUR
+              </StandardCTAButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // --- Main CTA Test Component ---
 export default function CTATest() {

@@ -203,16 +203,15 @@ export default function ServiceTest() {
   ];
 
   return (
-    <section className="w-full py-8 sm:py-12 bg-[#231F20] relative">
+    <section className="w-full py-12 sm:py-16 bg-[#231F20] relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-12 sm:mb-16 text-center">
+        <div className="mb-16 sm:mb-20 text-center">
           <SectionHeader
             mainHeading="We build brands, not just stuff."
             subLabel="Services"
             className="mb-4"
             onDarkBackground={true}
             pillPosition="section-boundary"
-            customPillStyle={{ top: "-30px" }}
           />
         </div>
 

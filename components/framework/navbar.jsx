@@ -2,11 +2,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import useSound from "@/hooks/use-sound";
 import { StandardCTAButton } from "../round/cta-test";
 
 const Navbar = () => {
   const { playClick } = useSound();
+  const router = useRouter();
 
   return (
     <nav
@@ -57,13 +59,7 @@ const Navbar = () => {
             rounded={true}
             onClick={() => {
               playClick();
-              // Scroll to contact section or handle CTA action
-              const contactSection = document.querySelector("#contact");
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth" });
-              } else {
-                console.log("CTA clicked - Start the detour!");
-              }
+              router.push("/contact");
             }}
           >
             START THE DETOUR

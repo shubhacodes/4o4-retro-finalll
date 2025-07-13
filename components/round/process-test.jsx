@@ -60,17 +60,16 @@ export function ProcessTestSoft() {
 
   return (
     <section className="w-full" style={{ backgroundColor: "#231F20" }}>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12 lg:py-16 xl:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 lg:py-20 xl:py-24">
         <div className="flex flex-col items-center justify-center">
           {/* Section Header */}
-          <div className="mb-6 sm:mb-8 lg:mb-12 text-center">
+          <div className="mb-8 sm:mb-10 lg:mb-16 text-center">
             <SectionHeader
               mainHeading="From idea to 'damn, that's good!'"
               subLabel="Process"
               className="mb-4"
               onDarkBackground={true}
               pillPosition="section-boundary"
-              customPillStyle={{ top: "-40px" }}
             />
           </div>
 
@@ -273,7 +272,7 @@ export function ProcessTestSoft() {
                           </div>
                           <div className="bg-white border-2 border-[#231F20] rounded-xl overflow-hidden">
                             {/* Image Container */}
-                            <div className="bg-gray-50 p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-[200px] sm:min-h-[240px]">
+                            <div className="bg-gray-50 p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-[200px] sm:min-h-[240px] lg:h-[200px]">
                               <div className="relative w-full max-w-[250px] sm:max-w-[300px] h-[150px] sm:h-[180px] lg:h-[200px]">
                                 <Image
                                   src={currentTabData.image}

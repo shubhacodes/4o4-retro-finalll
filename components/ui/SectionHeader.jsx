@@ -45,6 +45,30 @@ const SectionHeader = ({
     <div
       className={`${centerAlign ? "text-center" : ""} ${className} relative`}
     >
+      {/* Pill positioned at the top of the section */}
+      {subLabel && pillPosition === "section-boundary" && (
+        <div className="flex justify-center mb-6">
+          <div
+            className="relative px-3 py-1 rounded-full flex items-center justify-center"
+            style={{
+              backgroundColor: pillColor,
+              minWidth: "120px",
+              height: "32px",
+            }}
+          >
+            {/* Sub-label text centered in the pill */}
+            <span
+              className="font-space-grotesk text-xs font-bold tracking-wider uppercase text-center"
+              style={{
+                color: "#FAF9F5",
+              }}
+            >
+              {subLabel}
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* Main Creative Heading */}
       <div className="relative inline-block">
         <h1
@@ -59,8 +83,8 @@ const SectionHeader = ({
           {mainHeading}
         </h1>
 
-        {/* Pill positioned based on pillPosition prop */}
-        {subLabel && (
+        {/* Pill positioned based on pillPosition prop (for non-section-boundary cases) */}
+        {subLabel && pillPosition !== "section-boundary" && (
           <div
             className={pillPositioning.className}
             style={pillPositioning.style}

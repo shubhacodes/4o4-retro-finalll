@@ -355,7 +355,6 @@ const RoundedFAQSection = () => {
             subLabel="FAQ"
             className="mb-4"
             pillPosition="section-boundary"
-            customPillStyle={{ top: "-40px" }}
           />
         </div>
 

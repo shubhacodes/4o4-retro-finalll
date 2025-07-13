@@ -61,18 +61,17 @@ export default function PricingTest() {
 
   return (
     <section
-      className="w-full py-8 sm:py-10 lg:py-20"
+      className="w-full py-12 sm:py-16 lg:py-24"
       style={{ backgroundColor: "#231F20" }}
     >
       <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-16">
           <SectionHeader
             mainHeading="Good work costs, great work pays."
             subLabel="Pricing"
             className="mb-4 sm:mb-6 lg:mb-8"
             onDarkBackground={true}
             pillPosition="section-boundary"
-            customPillStyle={{ top: "-40px" }}
           />
 
           {/* Billing Toggle */}
@@ -114,9 +113,12 @@ export default function PricingTest() {
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto mb-6 sm:mb-8 lg:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 max-w-5xl mx-auto mb-6 sm:mb-8 lg:mb-12">
           {pricingData.map((plan, index) => (
-            <div key={plan.name} className="relative">
+            <div
+              key={plan.name}
+              className="relative max-w-sm mx-auto lg:max-w-none"
+            >
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-3 sm:-top-4 lg:-top-6 left-1/2 transform -translate-x-1/2 z-10">
@@ -130,7 +132,7 @@ export default function PricingTest() {
 
               {/* Card */}
               <div
-                className={`border-2 border-[#FAF9F5] rounded-lg p-3 sm:p-4 lg:p-8 h-full flex flex-col ${
+                className={`border-2 border-[#FAF9F5] rounded-lg p-4 sm:p-5 lg:p-8 h-full flex flex-col ${
                   plan.popular ? "lg:transform lg:scale-105" : ""
                 }`}
                 style={{ backgroundColor: plan.cardBg }}

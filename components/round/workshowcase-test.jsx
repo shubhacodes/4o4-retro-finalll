@@ -594,41 +594,43 @@ export default function WorkShowcaseTest() {
       className="w-full flex flex-col relative"
       style={{ backgroundColor: "#FAF9F5" }}
     >
-      {/* Top Right Button Group */}
-      <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30 flex items-center gap-1 sm:gap-2">
+      {/* Top Right Button Group - Improved Mobile Layout */}
+      <div className="absolute top-3 sm:top-6 right-3 sm:right-6 z-30 flex flex-col items-end gap-2 sm:gap-3">
+        {/* Joystick Button - positioned first on mobile */}
+        <JoystickButton
+          gameId={1}
+          className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12"
+        />
+
         {/* BRING THEM BACK Button - Only show when cards are hidden */}
         {hiddenCards.size > 0 && (
           <button
             onClick={refreshCards}
-            className="bg-white border-2 border-black text-black px-2 sm:px-4 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm transform hover:scale-105 flex items-center gap-1 sm:gap-2 group rounded-lg h-10 sm:h-12"
+            className="bg-white border-2 border-black text-black px-2 sm:px-4 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm transform hover:scale-105 flex items-center gap-1 sm:gap-2 group rounded-lg h-8 sm:h-12 min-w-[60px] sm:min-w-auto"
             title="Bring back all projects"
             style={{
               animation: "slideInFromLeft 0.3s ease-out",
             }}
           >
             <RotateCcw
-              size={12}
+              size={10}
               className="text-[#DE6A48] group-hover:rotate-180 transition-transform duration-300 sm:w-[14px] sm:h-[14px]"
             />
             <span className="hidden sm:inline">BRING THEM BACK</span>
-            <span className="sm:hidden">BACK</span>
+            <span className="sm:hidden text-xs">BACK</span>
           </button>
         )}
-
-        {/* Joystick Button */}
-        <JoystickButton gameId={1} className="flex-shrink-0" />
       </div>
 
       {/* Responsive container with generous padding */}
-      <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 py-8 sm:py-12 lg:py-16 xl:py-20 flex-grow flex flex-col">
+      <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 py-12 sm:py-16 lg:py-20 xl:py-24 flex-grow flex flex-col">
         <div className="flex flex-col items-center justify-center">
           <SectionHeader
             mainHeading="See what we've been cooking."
             subLabel="Work Showcase"
-            className="mb-8 sm:mb-10 lg:mb-12"
+            className="mb-10 sm:mb-12 lg:mb-16"
             onDarkBackground={false}
             pillPosition="section-boundary"
-            customPillStyle={{ top: "-40px" }}
           />
 
           {/* Carousel Layout - responsive */}

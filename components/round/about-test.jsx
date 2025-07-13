@@ -201,7 +201,7 @@ const FolderSection = ({
 
 // Main About Us Panel component
 const AboutUsPanelSoft = () => {
-  const { playClick } = useSound();
+  const { playClick, playTypewriter } = useSound();
   const [expandedFolders, setExpandedFolders] = useState({
     "About Us": true,
     "Our History": true,
@@ -221,7 +221,7 @@ const AboutUsPanelSoft = () => {
   const messagesEndRef = useRef(null);
   const componentRef = useRef(null);
 
-  // Initialize intersection observer
+  // Initialize intersection observer and mobile detection
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -236,10 +236,19 @@ const AboutUsPanelSoft = () => {
       observer.observe(componentRef.current);
     }
 
+    // Mobile detection
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     return () => {
       if (componentRef.current) {
         observer.unobserve(componentRef.current);
       }
+      window.removeEventListener("resize", checkMobile);
     };
   }, []);
 
@@ -285,9 +294,21 @@ const AboutUsPanelSoft = () => {
       setIsTyping(true);
       setTypingUser({ user: message.user, avatar: message.avatar });
 
-      // Play typing sound
+      // Play typing sound and simulate typewriter effect
       if (isInView) {
-        playClick();
+        playTypewriter();
+
+        // Add multiple typewriter sounds during typing for realism
+        const typewriterInterval = setInterval(() => {
+          if (isInView) {
+            playTypewriter();
+          }
+        }, 120); // Play typewriter sound every 120ms during typing
+
+        // Clear interval after typing duration
+        setTimeout(() => {
+          clearInterval(typewriterInterval);
+        }, Math.min(Math.max(message.message.length * 50, 800), 3000));
       }
 
       // Typing duration based on message length
@@ -306,7 +327,7 @@ const AboutUsPanelSoft = () => {
         setDisplayedMessages((prev) => [...prev, message]);
         setLastAnimatedIndex(currentIndex);
 
-        // Play message sound
+        // Play message completion sound
         if (isInView) {
           playClick();
         }
@@ -465,7 +486,7 @@ const AboutUsPanelSoft = () => {
         {/* Navigation Sidebar */}
         <nav
           className={`
-          fixed md:relative top-0 md:top-0 left-0 h-full w-72 sm:w-80 md:w-1/4 p-3 sm:p-4 overflow-y-auto z-50 transform transition-transform duration-300 ease-in-out border-r-2
+          absolute md:relative top-0 md:top-0 left-0 h-full w-72 sm:w-80 md:w-1/4 p-3 sm:p-4 overflow-y-auto z-50 transform transition-transform duration-300 ease-in-out border-r-2
           ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
           }
@@ -511,10 +532,10 @@ const AboutUsPanelSoft = () => {
           </div>
         </nav>
 
-        {/* Mobile Overlay */}
+        {/* Mobile Overlay - constrained to component */}
         {sidebarOpen && (
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
             onClick={toggleSidebar}
             aria-hidden="true"
           />
@@ -662,14 +683,13 @@ export function AboutTestSoft() {
                 className="mb-6 sm:mb-8"
                 onDarkBackground={false}
                 pillPosition="section-boundary"
-                customPillStyle={{ top: "-30px" }}
               />
 
               {/* Main Content Container */}
-              <div className="mt-4 sm:mt-6 w-full flex justify-center relative">
+              <div className="mt-6 sm:mt-8 w-full flex justify-center relative">
                 <div className="w-full max-w-6xl relative">
                   {/* Background Container */}
-                  <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[650px]">
+                  <div className="relative w-full h-[500px] sm:h-[580px] md:h-[650px] lg:h-[700px]">
                     {/* Main Container */}
                     <div
                       className="absolute top-0 left-0 w-full h-full border-2 rounded-lg sm:rounded-xl"
