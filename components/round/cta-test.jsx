@@ -199,48 +199,53 @@ export const StandardCTAButton = ({
 
   const sizes = {
     small: {
-      padding: "10px 20px",
+      padding: "8px 16px",
       fontSize: "14px",
-      translate: { hover: "1px, 1px", pressed: "2px, 2px" },
     },
     medium: {
-      padding: "12px 28px",
+      padding: "12px 24px",
       fontSize: "16px",
-      translate: { hover: "2px, 2px", pressed: "3px, 3px" },
     },
     large: {
-      padding: "15px 36px",
-      fontSize: "20px",
-      translate: { hover: "3px, 3px", pressed: "4px, 4px" },
+      padding: "16px 32px",
+      fontSize: "18px",
     },
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className={`
-        relative 
-        bg-[#FAF9F5] 
-        border-2 
-        border-black 
-        font-oswald 
-        text-[#231F20]
-        hover:bg-[#FAF9F5]/90 
-        active:bg-[#FAF9F5]/80
-        transition-all 
-        duration-200 
-        transform 
-        hover:scale-105
-        ${rounded ? "rounded-xl" : ""}
-        ${className}
-      `}
-      style={{
-        padding: sizes[size].padding,
-        fontSize: sizes[size].fontSize,
-      }}
-    >
-      {children}
-    </button>
+    <div className={`relative inline-block ${className}`}>
+      {/* Black shadow button */}
+      <button
+        className={`absolute font-bold border-2 translate-x-0.5 translate-y-0.5 sm:translate-x-1 sm:translate-y-1 cursor-pointer ${
+          rounded ? "rounded-lg" : ""
+        }`}
+        style={{
+          padding: sizes[size].padding,
+          fontSize: sizes[size].fontSize,
+          backgroundColor: "#000000",
+          borderColor: "#000000",
+          color: "#000000",
+          fontFamily: "var(--font-oswald)",
+        }}
+      >
+        {children}
+      </button>
+      {/* Main button */}
+      <button
+        onClick={handleClick}
+        className={`relative font-bold border-2 border-black text-black hover:transform hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer active:translate-x-0.5 active:translate-y-0.5 sm:active:translate-x-1 sm:active:translate-y-1 ${
+          rounded ? "rounded-lg" : ""
+        }`}
+        style={{
+          padding: sizes[size].padding,
+          fontSize: sizes[size].fontSize,
+          backgroundColor: "#FFB600",
+          fontFamily: "var(--font-oswald)",
+        }}
+      >
+        {children}
+      </button>
+    </div>
   );
 };
 
@@ -341,134 +346,98 @@ const SharpCTASection = () => (
   </section>
 );
 
-// --- Rounded CTA Section (Retro Arcade Machine Design) ---
+// --- Rounded CTA Section (Retro Computer Screen Design) ---
 const RoundedCTASection = () => (
   <section
     className="w-full pt-6 pb-2 sm:pt-8 sm:pb-3 lg:pt-10 lg:pb-4"
     style={{ backgroundColor: "#231F20" }}
   >
     <div className="mx-auto max-w-6xl px-6">
-      {/* Arcade Cabinet Container */}
-      <div className="relative">
-        {/* Main Arcade Cabinet */}
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            border: "4px solid black",
-            borderRadius: "24px",
-            backgroundColor: "#FAF9F5",
-            overflow: "hidden",
-          }}
-        >
-          {/* Arcade Cabinet Header */}
-          <div className="bg-[#DB5029] border-b-4 border-black p-4 relative">
-            <div className="text-center">
-              <h3 className="font-bold text-black font-oswald text-lg tracking-wider">
-                404 ARCADE
-              </h3>
-              <div className="text-xs text-black font-mono">
-                INSERT COIN TO CONTINUE
-              </div>
-            </div>
-          </div>
-
-          {/* Arcade Screen & Controls Area */}
-          <div className="bg-[#FAF9F5] p-6 sm:p-8 lg:p-10 relative">
-            {/* Stacked Layout - Video First, Controls Second */}
-            <div className="flex flex-col gap-8 relative z-10">
-              {/* First Line: Game Screen */}
-              <div className="w-full flex justify-center">
-                {/* Subtle Screen Frame - Smaller Video */}
-                <div className="relative bg-[#231F20] p-3 rounded-xl border-2 border-black w-full max-w-2xl">
-                  <div style={{ height: "300px", overflow: "hidden" }}>
-                    <CTAVideo rounded={true} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Second Line: Control Panel */}
-              <div className="w-full">
-                {/* Subtle Control Panel */}
-                <div className="bg-[#231F20] rounded-xl p-6 border-2 border-black relative overflow-hidden">
-                  {/* Control Panel Content */}
-                  <div className="relative z-10">
-                    <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                      {/* Left: Joystick Area */}
-                      <div className="flex flex-col items-center">
-                        <div className="inline-block bg-[#FAF9F5] rounded-full p-3 border-2 border-[#DB5029] mb-3">
-                          <JoystickButton
-                            gameId={3}
-                            className="relative bottom-auto right-auto"
-                          />
-                        </div>
-                        <div className="text-[#DB5029] font-mono text-xs tracking-wider">
-                          PLAYER 1
-                        </div>
-                      </div>
-
-                      {/* Center: Message */}
-                      <div className="flex-1 text-center lg:text-left">
-                        <h2
-                          className="font-bold mb-4 text-xl sm:text-2xl font-oswald text-[#FAF9F5]"
-                          style={{
-                            lineHeight: "1.3",
-                            letterSpacing: "0.5px",
-                          }}
-                        >
-                          The best decisions are made when taken with{" "}
-                          <span className="text-[#DB5029]">time.</span>
-                        </h2>
-                        <p
-                          className="text-sm sm:text-base font-space-grotesk text-[#FAF9F5] opacity-80 mb-6"
-                          style={{
-                            lineHeight: "1.6",
-                          }}
-                        >
-                          So someone plays a game. Let's create something
-                          meaningful together while you take your time to
-                          decide.
-                        </p>
-                      </div>
-
-                      {/* Right: Start Button */}
-                      <div className="flex flex-col items-center">
-                        <StandardCTAButton
-                          size="medium"
-                          rounded={true}
-                          onClick={() =>
-                            console.log("Game Started - Arcade CTA!")
-                          }
-                          className="bg-[#DB5029] text-black hover:bg-[#DB5029]/90 border-black font-bold mb-2"
-                        >
-                          🎮 START GAME
-                        </StandardCTAButton>
-                        <div className="text-[#FAF9F5] font-mono text-xs opacity-60">
-                          PRESS START
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+        {/* Left Side - Computer Monitor */}
+        <div className="w-full lg:w-1/2 flex justify-center">
+          <div className="relative inline-block">
+            {/* Monitor Frame */}
+            <div
+              className="relative bg-[#FAF9F5] p-6 border-4 border-black"
+              style={{
+                borderRadius: "12px",
+                boxShadow:
+                  "inset -3px -3px 6px rgba(0,0,0,0.4), inset 3px 3px 6px rgba(255,255,255,0.8)",
+              }}
+            >
+              {/* Screen Display */}
+              <div
+                className="bg-[#231F20] border-2 border-black p-2"
+                style={{
+                  borderRadius: "4px",
+                  boxShadow:
+                    "inset -2px -2px 4px rgba(0,0,0,0.8), inset 2px 2px 4px rgba(255,255,255,0.1)",
+                }}
+              >
+                {/* Video Display - Enlarged */}
+                <div
+                  style={{ height: "400px", overflow: "hidden" }}
+                  className="sm:h-[450px] lg:h-[500px]"
+                >
+                  <CTAVideo rounded={false} />
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Arcade Cabinet Footer */}
-          <div className="bg-[#231F20] border-t-4 border-black p-3">
-            <div className="flex items-center justify-between text-[#FAF9F5]">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-[#DB5029] rounded-full animate-pulse"></div>
-                <span className="font-mono text-xs">GAME READY</span>
-              </div>
-              <div className="text-center">
-                <div className="font-mono text-xs">404 FOUND US © 2024</div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs">CREDITS: ∞</span>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              </div>
-            </div>
+            {/* Monitor Base */}
+            <div
+              className="mx-auto mt-2 w-24 h-6 bg-[#FAF9F5] border-2 border-black"
+              style={{
+                borderRadius: "0 0 8px 8px",
+                boxShadow:
+                  "inset -2px -2px 4px rgba(0,0,0,0.3), inset 2px 2px 4px rgba(255,255,255,0.8)",
+              }}
+            ></div>
+            <div
+              className="mx-auto mt-1 w-32 h-3 bg-[#FAF9F5] border-2 border-black"
+              style={{
+                borderRadius: "4px",
+                boxShadow:
+                  "inset -1px -1px 2px rgba(0,0,0,0.3), inset 1px 1px 2px rgba(255,255,255,0.8)",
+              }}
+            ></div>
+          </div>
+        </div>
+
+        {/* Right Side - Content */}
+        <div className="w-full lg:w-1/2 text-center lg:text-left">
+          <h2 className="font-bold mb-4 text-xl sm:text-2xl font-oswald text-[#FAF9F5]">
+            System ready for creative{" "}
+            <span className="text-[#DB5029]">initialization.</span>
+          </h2>
+          <p
+            className="text-sm sm:text-base font-space-grotesk text-[#FAF9F5] opacity-80 mb-8"
+            style={{ lineHeight: "1.6" }}
+          >
+            Your project parameters are being configured. We're prepared to
+            begin the creative process and establish your brand's digital
+            presence.
+          </p>
+
+          {/* Hero-style CTA Button */}
+          <div className="flex justify-center lg:justify-start">
+            <StandardCTAButton
+              size="large"
+              rounded={true}
+              onClick={() => {
+                // Scroll to contact section or handle CTA action
+                const contactSection = document.querySelector("#contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  // Fallback - could navigate to contact page or show contact form
+                  console.log("CTA clicked - Start the detour!");
+                }
+              }}
+            >
+              START THE DETOUR
+            </StandardCTAButton>
           </div>
         </div>
       </div>

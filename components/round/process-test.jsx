@@ -1,13 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { Minus, Square, X, Folder, FileText, Rocket } from "lucide-react";
 import useSound from "@/hooks/use-sound";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-// Retro Process Section with Terminal Interface
+// Retro Process Section with Site Design Consistency
 export function ProcessTestSoft() {
   const [activeCard, setActiveCard] = useState(1);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const { playClick } = useSound();
+
+  // Update time every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const tabData = [
     {
@@ -19,6 +30,7 @@ export function ProcessTestSoft() {
       image: "/process-1.png",
       status: "ACTIVE",
       progress: 100,
+      icon: Folder,
     },
     {
       id: 2,
@@ -29,6 +41,7 @@ export function ProcessTestSoft() {
       image: "/process-2.png",
       status: "PENDING",
       progress: 0,
+      icon: FileText,
     },
     {
       id: 3,
@@ -39,6 +52,7 @@ export function ProcessTestSoft() {
       image: "/process-3.png",
       status: "PENDING",
       progress: 0,
+      icon: Rocket,
     },
   ];
 
@@ -60,199 +74,266 @@ export function ProcessTestSoft() {
             />
           </div>
 
-          {/* Retro Terminal Container */}
+          {/* Retro-Modern Window */}
           <div className="relative w-full">
-            {/* Main Terminal Window */}
-            <div className="relative bg-[#DB5029] border-2 border-black overflow-hidden rounded-xl">
-              {/* Terminal Status Bar */}
-              <div className="bg-[#231F20] border-b-2 border-black p-2">
-                <div className="flex items-center gap-2 text-[#DB5029] font-mono text-xs">
-                  <span className="animate-pulse">●</span>
-                  <span>SYSTEM STATUS: ONLINE</span>
-                  <span className="text-white">|</span>
-                  <span>ACTIVE PROCESSES: {activeCard}/3</span>
-                  <span className="text-white">|</span>
-                  <span>MEMORY: {((activeCard / 3) * 100).toFixed(0)}%</span>
+            <div className="bg-white border-2 border-[#231F20] rounded-xl overflow-hidden">
+              {/* Window Title Bar */}
+              <div className="bg-[#DB5029] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between border-b-2 border-[#231F20]">
+                <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white border-2 border-[#231F20] rounded-full flex items-center justify-center flex-shrink-0">
+                    <Folder
+                      size={10}
+                      className="text-[#231F20] sm:w-3 sm:h-3"
+                    />
+                  </div>
+                  <span className="text-white font-bold text-xs sm:text-sm font-oswald truncate">
+                    Process Manager - [Our Work Process]
+                  </span>
+                </div>
+                <div className="flex gap-1 sm:gap-2 flex-shrink-0">
+                  <button
+                    className="bg-white border border-[#231F20] rounded-full hover:bg-gray-100 transition-all duration-200 flex items-center justify-center transform hover:scale-105"
+                    style={{
+                      width: "clamp(22px, 4vw, 30px)",
+                      height: "clamp(22px, 4vw, 30px)",
+                    }}
+                    onClick={() => playClick()}
+                  >
+                    <Minus size={12} className="text-[#231F20]" />
+                  </button>
+                  <button
+                    className="bg-white border border-[#231F20] rounded-full hover:bg-gray-100 transition-all duration-200 flex items-center justify-center transform hover:scale-105"
+                    style={{
+                      width: "clamp(22px, 4vw, 30px)",
+                      height: "clamp(22px, 4vw, 30px)",
+                    }}
+                    onClick={() => playClick()}
+                  >
+                    <Square size={10} className="text-[#231F20]" />
+                  </button>
+                  <button
+                    className="bg-white border border-[#231F20] rounded-full hover:bg-red-500 hover:text-white transition-all duration-200 flex items-center justify-center transform hover:scale-105"
+                    style={{
+                      width: "clamp(22px, 4vw, 30px)",
+                      height: "clamp(22px, 4vw, 30px)",
+                    }}
+                    onClick={() => playClick()}
+                  >
+                    <X size={12} className="text-[#231F20] hover:text-white" />
+                  </button>
                 </div>
               </div>
 
               {/* Main Content Area */}
-              <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-b-xl">
-                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-                  {/* Left: Process Terminal */}
-                  <div className="w-full lg:w-1/2 flex items-center">
-                    <div className="bg-[#231F20] border-2 border-black rounded-lg p-4 font-mono text-sm w-full">
-                      {/* Terminal Header */}
-                      <div className="flex items-center justify-between mb-4 pb-2 border-b border-[#DB5029]">
-                        <span className="text-[#DB5029] font-bold">
-                          PROCESS_MANAGER.EXE
-                        </span>
-                        <span className="text-white text-xs">v2.0.24</span>
-                      </div>
+              <div className="flex flex-col lg:flex-row min-h-[400px] sm:min-h-[500px]">
+                {/* Left Sidebar - Process List */}
+                <div className="w-full lg:w-1/3 bg-white flex flex-col border-b-2 lg:border-b-0 lg:border-r-2 border-[#231F20]">
+                  {/* Sidebar Header */}
+                  <div className="bg-[#DB5029] px-3 sm:px-4 py-2 sm:py-3 flex items-center">
+                    <span className="text-white font-bold text-xs sm:text-sm font-oswald">
+                      Process Steps
+                    </span>
+                  </div>
 
-                      {/* Process List */}
-                      <div className="space-y-2">
-                        {tabData.map((tab) => (
-                          <div
-                            key={tab.id}
-                            className={`border-2 rounded-lg p-3 cursor-pointer transition-all duration-300 ${
-                              activeCard === tab.id
-                                ? "border-[#DB5029] bg-[#DB5029]/10"
-                                : "border-gray-600 hover:border-[#DB5029]/50"
-                            }`}
-                            onClick={() => {
-                              playClick();
-                              setActiveCard(tab.id);
-                            }}
-                          >
-                            {/* Process Header */}
-                            <div className="flex items-center justify-between mb-2">
-                              <div className="flex items-center gap-2">
+                  {/* Horizontal border line */}
+                  <div className="h-0.5 bg-[#231F20]"></div>
+
+                  {/* Process List */}
+                  <div className="flex-1 p-3 sm:p-4 overflow-y-auto">
+                    {/* Mobile: Horizontal scrollable tabs */}
+                    <div className="block lg:hidden">
+                      <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
+                        {tabData.map((tab) => {
+                          const IconComponent = tab.icon;
+                          return (
+                            <div
+                              key={tab.id}
+                              className={`flex items-center gap-2 px-3 py-2 cursor-pointer text-xs rounded-xl border-2 transition-all duration-300 hover:scale-105 flex-shrink-0 whitespace-nowrap ${
+                                activeCard === tab.id
+                                  ? "bg-[#DB5029] text-white border-[#DB5029]"
+                                  : "bg-white text-[#231F20] border-[#231F20] hover:bg-gray-50"
+                              }`}
+                              onClick={() => {
+                                playClick();
+                                setActiveCard(tab.id);
+                              }}
+                            >
+                              <IconComponent
+                                size={14}
+                                className={
+                                  activeCard === tab.id
+                                    ? "text-white"
+                                    : "text-[#231F20]"
+                                }
+                              />
+                              <div className="flex flex-col">
                                 <div
-                                  className={`w-2 h-2 rounded-full ${
+                                  className={`font-bold font-oswald text-xs ${
                                     activeCard === tab.id
-                                      ? "bg-[#DB5029] animate-pulse"
-                                      : "bg-gray-500"
-                                  }`}
-                                ></div>
-                                <span
-                                  className={`font-bold ${
-                                    activeCard === tab.id
-                                      ? "text-[#DB5029]"
-                                      : "text-white"
+                                      ? "text-white"
+                                      : "text-[#231F20]"
                                   }`}
                                 >
                                   {tab.title}
-                                </span>
+                                </div>
+                                <div
+                                  className={`text-xs opacity-75 font-space-grotesk ${
+                                    activeCard === tab.id
+                                      ? "text-white"
+                                      : "text-[#231F20]"
+                                  }`}
+                                >
+                                  {tab.subtitle}
+                                </div>
                               </div>
-                              <span
-                                className={`text-xs px-2 py-1 rounded border ${
-                                  activeCard === tab.id
-                                    ? "text-[#DB5029] border-[#DB5029]"
-                                    : "text-gray-400 border-gray-600"
-                                }`}
-                              >
-                                {activeCard === tab.id ? "RUNNING" : "IDLE"}
-                              </span>
                             </div>
-
-                            {/* Process Details */}
-                            <div className="text-xs text-gray-400 mb-2">
-                              {tab.subtitle}
-                            </div>
-
-                            {/* Progress Bar */}
-                            <div className="w-full bg-gray-700 rounded-full h-1">
-                              <div
-                                className={`h-1 rounded-full transition-all duration-500 ${
-                                  activeCard === tab.id
-                                    ? "bg-[#DB5029]"
-                                    : "bg-gray-600"
-                                }`}
-                                style={{
-                                  width: `${activeCard === tab.id ? 100 : 0}%`,
-                                }}
-                              ></div>
-                            </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
+                    </div>
 
-                      {/* Terminal Footer */}
-                      <div className="mt-4 pt-2 border-t border-[#DB5029]/30">
-                        <div className="flex items-center gap-2 text-[#DB5029] text-xs">
-                          <span className="animate-pulse">{">"}</span>
-                          <span>SELECT PROCESS TO VIEW DETAILS</span>
-                        </div>
+                    {/* Desktop: Vertical stacked layout */}
+                    <div className="hidden lg:block">
+                      <div className="space-y-2 sm:space-y-3">
+                        {tabData.map((tab) => {
+                          const IconComponent = tab.icon;
+                          return (
+                            <div
+                              key={tab.id}
+                              className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 cursor-pointer text-xs sm:text-sm rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
+                                activeCard === tab.id
+                                  ? "bg-[#DB5029] text-white border-[#DB5029]"
+                                  : "bg-white text-[#231F20] border-[#231F20] hover:bg-gray-50"
+                              }`}
+                              onClick={() => {
+                                playClick();
+                                setActiveCard(tab.id);
+                              }}
+                            >
+                              <IconComponent
+                                size={14}
+                                className={
+                                  activeCard === tab.id
+                                    ? "text-white"
+                                    : "text-[#231F20]"
+                                }
+                              />
+                              <div className="flex-1 min-w-0">
+                                <div className="font-bold font-oswald text-[#231F20] truncate">
+                                  {tab.title}
+                                </div>
+                                <div className="text-xs opacity-75 font-space-grotesk text-[#231F20] truncate">
+                                  {tab.subtitle}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Right: Process Display */}
-                  <div className="w-full lg:w-1/2">
-                    <div className="bg-[#F7F4E9] border-2 border-black rounded-lg p-4 min-h-[400px]">
-                      {/* Display Header */}
-                      <div className="flex items-center justify-between mb-4 pb-2 border-b-2 border-black">
-                        <span className="text-[#231F20] font-bold font-oswald text-lg">
-                          {currentTabData?.title || "SELECT PROCESS"}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                          <span className="text-xs text-[#231F20] font-mono">
-                            LIVE
-                          </span>
-                        </div>
-                      </div>
+                {/* Right Panel - Content Display */}
+                <div className="flex-1 bg-white flex flex-col">
+                  {/* Content Header */}
+                  <div className="bg-[#DB5029] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between">
+                    <span className="text-white font-bold text-xs sm:text-sm font-oswald truncate">
+                      {currentTabData?.title || "Select Process"} - Details
+                    </span>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full border border-white"></div>
+                      <span className="text-white text-xs font-space-grotesk font-bold">
+                        ONLINE
+                      </span>
+                    </div>
+                  </div>
 
-                      {/* Process Content */}
-                      <div className="space-y-4">
+                  {/* Horizontal border line */}
+                  <div className="h-0.5 bg-[#231F20]"></div>
+
+                  {/* Main Content */}
+                  <div className="flex-1 p-3 sm:p-4 lg:p-6 overflow-y-auto">
+                    {currentTabData ? (
+                      <div className="space-y-4 sm:space-y-6 lg:space-y-8">
                         {/* Process Description */}
-                        <div className="bg-white border-2 border-black rounded-lg p-4">
-                          <p className="text-[#231F20] font-space-grotesk leading-relaxed">
-                            {currentTabData?.content ||
-                              "No process selected. Click on a process in the terminal to view details."}
-                          </p>
+                        <div>
+                          <div className="font-bold mb-3 sm:mb-4 text-[#231F20] font-oswald text-lg sm:text-xl">
+                            PROCESS DESCRIPTION
+                          </div>
+                          <div className="text-[#231F20] font-space-grotesk text-sm sm:text-base leading-relaxed bg-gray-50 p-3 sm:p-4 rounded-xl border-2 border-[#231F20]">
+                            {currentTabData.content}
+                          </div>
                         </div>
 
                         {/* Process Visualization */}
-                        <div className="bg-white border-2 border-black rounded-lg p-4 flex items-center justify-center">
-                          <div className="relative w-[280px] h-[220px] sm:w-[320px] sm:h-[250px]">
-                            <Image
-                              src={currentTabData?.image || tabData[0].image}
-                              alt={currentTabData?.title || "Process"}
-                              fill
-                              className="object-contain transition-all duration-500 ease-out"
-                              sizes="(max-width: 640px) 280px, 320px"
-                              priority
-                            />
-
-                            {/* Retro Scanlines Effect */}
-                            <div
-                              className="absolute inset-0 pointer-events-none opacity-10"
-                              style={{
-                                background: `repeating-linear-gradient(
-                                  0deg,
-                                  transparent,
-                                  transparent 2px,
-                                  rgba(0,0,0,0.1) 2px,
-                                  rgba(0,0,0,0.1) 4px
-                                )`,
-                              }}
-                            />
+                        <div>
+                          <div className="font-bold mb-3 sm:mb-4 text-[#231F20] font-oswald text-lg sm:text-xl">
+                            VISUAL REPRESENTATION
                           </div>
-                        </div>
+                          <div className="bg-white border-2 border-[#231F20] rounded-xl overflow-hidden">
+                            {/* Image Container */}
+                            <div className="bg-gray-50 p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-[200px] sm:min-h-[240px]">
+                              <div className="relative w-full max-w-[250px] sm:max-w-[300px] h-[150px] sm:h-[180px] lg:h-[200px]">
+                                <Image
+                                  src={currentTabData.image}
+                                  alt={currentTabData.title}
+                                  fill
+                                  className="object-contain"
+                                  sizes="(max-width: 640px) 250px, (max-width: 1024px) 300px, 300px"
+                                  priority
+                                />
+                              </div>
+                            </div>
 
-                        {/* Process Stats */}
-                        <div className="bg-[#231F20] border-2 border-black rounded-lg p-3">
-                          <div className="grid grid-cols-3 gap-4 text-center">
-                            <div>
-                              <div className="text-[#DB5029] font-mono text-xs">
-                                STATUS
-                              </div>
-                              <div className="text-white font-bold text-sm">
-                                ACTIVE
-                              </div>
-                            </div>
-                            <div>
-                              <div className="text-[#DB5029] font-mono text-xs">
-                                PRIORITY
-                              </div>
-                              <div className="text-white font-bold text-sm">
-                                HIGH
-                              </div>
-                            </div>
-                            <div>
-                              <div className="text-[#DB5029] font-mono text-xs">
-                                PROGRESS
-                              </div>
-                              <div className="text-white font-bold text-sm">
-                                100%
+                            {/* Image Info Bar */}
+                            <div className="bg-white border-t-2 border-[#231F20] px-3 sm:px-4 py-2 sm:py-3">
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs sm:text-sm font-oswald font-bold text-[#231F20] truncate">
+                                  {currentTabData.title} Visualization
+                                </span>
+                                <span className="text-xs font-space-grotesk text-[#231F20] opacity-75 flex-shrink-0">
+                                  Stage {currentTabData.id} of 3
+                                </span>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                    ) : (
+                      <div className="text-center text-[#231F20] mt-8 font-space-grotesk text-sm sm:text-base">
+                        Select a process from the sidebar to view details.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Status Bar - Hidden on mobile */}
+              <div className="hidden sm:block bg-[#DB5029] border-t-2 border-[#231F20] px-3 sm:px-4 py-2 sm:py-3">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 text-xs sm:text-sm">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 lg:gap-6">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full border border-white"></div>
+                      <span className="text-white font-bold font-oswald">
+                        STATUS: {currentTabData?.status || "IDLE"}
+                      </span>
                     </div>
+                    <div className="text-white font-space-grotesk">
+                      ACTIVE PROCESS: {activeCard}/3
+                    </div>
+                    <div className="text-white font-space-grotesk">
+                      PROGRESS: {currentTabData?.progress || 0}%
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <span className="text-white font-space-grotesk text-xs">
+                      {currentTime.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit",
+                      })}
+                    </span>
                   </div>
                 </div>
               </div>

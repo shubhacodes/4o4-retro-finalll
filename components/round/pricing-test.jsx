@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { StandardCTAButton } from "./cta-test";
+import useSound from "@/hooks/use-sound";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function PricingTest() {
   const [billingCycle, setBillingCycle] = useState("monthly");
+  const { playClick } = useSound();
 
   const pricingData = [
     {
@@ -77,7 +79,10 @@ export default function PricingTest() {
           <div className="flex justify-center">
             <div className="bg-[#FAF9F5] border-2 border-black rounded-lg p-0.5 flex">
               <button
-                onClick={() => setBillingCycle("monthly")}
+                onClick={() => {
+                  playClick();
+                  setBillingCycle("monthly");
+                }}
                 className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold font-oswald transition-all duration-200 rounded-md text-base sm:text-lg ${
                   billingCycle === "monthly"
                     ? "bg-[#FFB600] text-black"
@@ -87,7 +92,10 @@ export default function PricingTest() {
                 MONTHLY
               </button>
               <button
-                onClick={() => setBillingCycle("yearly")}
+                onClick={() => {
+                  playClick();
+                  setBillingCycle("yearly");
+                }}
                 className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold font-oswald transition-all duration-200 rounded-md text-base sm:text-lg ${
                   billingCycle === "yearly"
                     ? "bg-[#FFB600] text-black"

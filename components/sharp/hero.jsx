@@ -18,7 +18,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="w-full" style={{ backgroundColor: "#DE6A48" }}>
+    <section className="w-full" style={{ backgroundColor: "#231F20" }}>
       <div className="mx-auto max-w-[1150px] px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12 min-h-[500px] sm:min-h-[600px]">
           {/* Left Side - Text Content */}
@@ -27,7 +27,7 @@ export default function Hero() {
             <div className="flex justify-center lg:justify-start">
               <div
                 className="inline-block px-3 sm:px-4 py-2 sm:py-3 text-white font-bold text-xs sm:text-sm tracking-wide rounded-lg"
-                style={{ backgroundColor: "#000000" }}
+                style={{ backgroundColor: "#DB5029" }}
               >
                 DESTINY DRESSES LIKE AN ERROR, SOMETIMES.
               </div>
@@ -143,6 +143,16 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Bottom Border SVG */}
+      <div className="w-full overflow-hidden">
+        <img
+          src="/border.svg"
+          alt="Border decoration"
+          className="w-full h-auto block"
+          style={{ display: "block", width: "100%" }}
+        />
       </div>
     </section>
   );

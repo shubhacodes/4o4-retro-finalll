@@ -1,5 +1,7 @@
 "use client";
 
+import { StandardCTAButton } from "./cta-test";
+
 export default function HeroTest2() {
   return (
     <section className="w-full" style={{ backgroundColor: "#F7F4E9" }}>
@@ -86,13 +88,9 @@ export default function HeroTest2() {
                 </div>
 
                 {/* CTA Button */}
-                <button
-                  className="px-6 py-3 font-bold text-black border-2 text-xl hover:scale-105 hover:bg-white hover:text-black transition-all duration-150 cursor-pointer"
-                  style={{
-                    backgroundColor: "#f0752f",
-                    borderColor: "#5a5248",
-                    fontFamily: "var(--font-oswald)",
-                  }}
+                <StandardCTAButton
+                  size="large"
+                  rounded={false}
                   onClick={() => {
                     // Scroll to contact section or handle CTA action
                     const contactSection = document.querySelector("#contact");
@@ -105,7 +103,7 @@ export default function HeroTest2() {
                   }}
                 >
                   START THE DETOUR
-                </button>
+                </StandardCTAButton>
               </div>
             </div>
 

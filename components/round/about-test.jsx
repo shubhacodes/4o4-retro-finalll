@@ -10,96 +10,7 @@ import {
 } from "lucide-react";
 import { CHAT_CONVERSATIONS, FOLDER_ITEMS } from "../../data/about-data";
 import SectionHeader from "@/components/ui/SectionHeader";
-
-// Retro computer sound generation using Web Audio API
-const createRetroSounds = () => {
-  const audioContext =
-    typeof window !== "undefined"
-      ? new (window.AudioContext || window.webkitAudioContext)()
-      : null;
-
-  const playMessageSound = () => {
-    if (!audioContext) return;
-
-    // Classic computer beep sound - like old terminals
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    // Retro beep characteristics - sharp, digital
-    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-    oscillator.type = "square"; // Classic digital sound
-
-    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-    gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
-    gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.1);
-    gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.15);
-
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.15);
-  };
-
-  const playTypingSound = () => {
-    if (!audioContext) return;
-
-    // Typewriter/mechanical keyboard click
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    const filterNode = audioContext.createBiquadFilter();
-
-    oscillator.connect(filterNode);
-    filterNode.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    // Sharp click sound like old typewriter
-    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-    oscillator.type = "square";
-
-    // Add some filtering for a more authentic click
-    filterNode.type = "highpass";
-    filterNode.frequency.setValueAtTime(300, audioContext.currentTime);
-
-    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-    gainNode.gain.linearRampToValueAtTime(
-      0.08,
-      audioContext.currentTime + 0.005
-    );
-    gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.04);
-
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.04);
-  };
-
-  // Additional retro startup sound
-  const playStartupSound = () => {
-    if (!audioContext) return;
-
-    // Classic computer startup beep sequence
-    const frequencies = [400, 600, 800];
-    frequencies.forEach((freq, index) => {
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-
-      oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
-      oscillator.type = "square";
-
-      const startTime = audioContext.currentTime + index * 0.1;
-      gainNode.gain.setValueAtTime(0, startTime);
-      gainNode.gain.linearRampToValueAtTime(0.05, startTime + 0.02);
-      gainNode.gain.linearRampToValueAtTime(0, startTime + 0.08);
-
-      oscillator.start(startTime);
-      oscillator.stop(startTime + 0.08);
-    });
-  };
-
-  return { playMessageSound, playTypingSound, playStartupSound };
-};
+import useSound from "@/hooks/use-sound";
 
 // Simple retro theme configuration
 const theme = {
@@ -290,6 +201,7 @@ const FolderSection = ({
 
 // Main About Us Panel component
 const AboutUsPanelSoft = () => {
+  const { playClick } = useSound();
   const [expandedFolders, setExpandedFolders] = useState({
     "About Us": true,
     "Our History": true,
@@ -306,7 +218,6 @@ const AboutUsPanelSoft = () => {
   const [isInView, setIsInView] = useState(false);
 
   const timeoutRefs = useRef([]);
-  const soundsRef = useRef(null);
   const messagesEndRef = useRef(null);
   const componentRef = useRef(null);
 
@@ -332,21 +243,18 @@ const AboutUsPanelSoft = () => {
     };
   }, []);
 
-  // Initialize retro computer sounds
+  // Component initialization
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      soundsRef.current = createRetroSounds();
-
-      // Play startup sound when component first loads and is in view
+    // Component is ready for use
+    if (typeof window !== "undefined" && isInView) {
+      // Play click sound when component first loads and is in view
       const timer = setTimeout(() => {
-        if (soundsRef.current && isInView) {
-          soundsRef.current.playStartupSound();
-        }
+        playClick();
       }, 500);
 
       return () => clearTimeout(timer);
     }
-  }, [isInView]);
+  }, [isInView, playClick]);
 
   // Message queue system with realistic timing and sounds
   useEffect(() => {
@@ -378,8 +286,8 @@ const AboutUsPanelSoft = () => {
       setTypingUser({ user: message.user, avatar: message.avatar });
 
       // Play typing sound
-      if (soundsRef.current && isInView) {
-        soundsRef.current.playTypingSound();
+      if (isInView) {
+        playClick();
       }
 
       // Typing duration based on message length
@@ -399,8 +307,8 @@ const AboutUsPanelSoft = () => {
         setLastAnimatedIndex(currentIndex);
 
         // Play message sound
-        if (soundsRef.current && isInView) {
-          soundsRef.current.playMessageSound();
+        if (isInView) {
+          playClick();
         }
 
         currentIndex++;
@@ -440,15 +348,20 @@ const AboutUsPanelSoft = () => {
   }, [selectedItem, isInView]);
 
   // Memoized handlers to prevent unnecessary re-renders
-  const toggleFolder = useCallback((folderName) => {
-    setExpandedFolders((prev) => ({
-      ...prev,
-      [folderName]: !prev[folderName],
-    }));
-  }, []);
+  const toggleFolder = useCallback(
+    (folderName) => {
+      playClick();
+      setExpandedFolders((prev) => ({
+        ...prev,
+        [folderName]: !prev[folderName],
+      }));
+    },
+    [playClick]
+  );
 
   const selectItem = useCallback(
     (item, parent = "About us") => {
+      playClick();
       setCurrentPath(`${parent} → ${item}`);
       setSelectedItem(item);
       // Close sidebar on mobile after selection
@@ -456,12 +369,13 @@ const AboutUsPanelSoft = () => {
         setSidebarOpen(false);
       }
     },
-    [isMobile]
+    [isMobile, playClick]
   );
 
   const toggleSidebar = useCallback(() => {
+    playClick();
     setSidebarOpen((prev) => !prev);
-  }, []);
+  }, [playClick]);
 
   // Auto-scroll to bottom when new messages appear (contained within chat area)
   useEffect(() => {

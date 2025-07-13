@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import useSound from "@/hooks/use-sound";
+import { StandardCTAButton } from "../round/cta-test";
 
 const Navbar = () => {
   const { playClick } = useSound();
@@ -10,10 +11,10 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        backgroundColor: "black",
+        backgroundColor: "#231F20",
         fontFamily: "var(--font-oswald)",
       }}
-      className="w-full py-4 px-4 sm:px-6 lg:px-8 border-b-3 border-white"
+      className="w-full py-4 px-4 sm:px-6 lg:px-8"
     >
       <div
         className="mx-auto flex justify-between items-center"
@@ -51,24 +52,22 @@ const Navbar = () => {
 
         {/* CTA Button */}
         <div>
-          <button
-            onClick={playClick}
-            style={{
-              border: "3px solid white",
-              backgroundColor: "white",
-              color: "black",
-              padding: "10px 20px",
-              fontSize: "16px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              borderRadius: "8px",
-              letterSpacing: "1px",
+          <StandardCTAButton
+            size="medium"
+            rounded={true}
+            onClick={() => {
+              playClick();
+              // Scroll to contact section or handle CTA action
+              const contactSection = document.querySelector("#contact");
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+              } else {
+                console.log("CTA clicked - Start the detour!");
+              }
             }}
-            className="hover:bg-[#f87a30] hover:text-white transform hover:scale-105 hover:shadow-lg active:scale-95 sm:px-6 sm:py-3 sm:text-lg"
           >
-            LET'S TALK
-          </button>
+            START THE DETOUR
+          </StandardCTAButton>
         </div>
       </div>
     </nav>
